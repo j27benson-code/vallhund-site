@@ -1,21 +1,25 @@
 # Vallhund Cybernetics
 
-> Vallhund Cybernetics is a veteran-owned robotics, embodied machine AI, defense autonomy, and battlefield medical systems company in Fayetteville, North Carolina, and a trade name (DBA) of KEMET Holdings LLC. It builds assistive, tactical, and casualty-care devices and desk humanoids that keep control and data with the person they serve, and offers consulting to SOF-medical companies.
+> Vallhund Cybernetics is a commercial robotics engineering company in Fayetteville, North Carolina, and a trade name (DBA) of KEMET Holdings LLC. It builds embodied machine AI (50 Hz local ONNX policies and vision-language-action manipulation), dexterous manipulation hardware (VH-MICRO-HAND-3F 3-finger serial-bus hands), and multi-rail power systems (VH-PWR-2.0). Vallhund Microbots™ is its consumer desk-robotics line, home of the desk humanoids Boozy™ and Marshmallow™.
 
 Mailing address: KEMET Holdings LLC, PO Box 25161, Fayetteville, NC 28314, USA.
 
 ## Pages
 
-- [Home](https://vallhundcybernetics.com/): Embodied Machine AI, Defense & Offense Autonomy, Battlefield Medical & Casualty-Care Robotics, and SOF-medical contracting
-- [Vallhund Microbots™ (Boozy™ & Marshmallow™)](https://vallhundcybernetics.com/microbots/): Desk humanoids with articulated 3-finger micro hands (VH-MICRO-HAND-3F), 3-rail hot-swap power (VH-PWR-2.0), and local 50 Hz ONNX Embodied AI
-- [Vallhund arm, interactive 3D model](https://vallhundcybernetics.com/arm.html): the manipulation module in bench build
+- [Home](https://vallhundcybernetics.com/): Commercial master plan. Stage 01 ships Vallhund Microbots™. Stage 02 is the hand, brain, and power stack. Stage 03 is concept architecture only.
+- [Vallhund Microbots™ (Boozy™ & Marshmallow™)](https://vallhundcybernetics.com/microbots/): Consumer desk-robotics line of Vallhund Cybernetics. Small desk humanoids with VH-MICRO-HAND-3F hands, VH-PWR-2.0 3-rail power, and local 50 Hz ONNX embodied AI.
+- [Founders & Contact](https://vallhundcybernetics.com/founders/): Founder and mailing address for Vallhund Cybernetics.
+- [Vallhund arm, interactive 3D model](https://vallhundcybernetics.com/arm.html): the manipulation module in bench build.
 
 ## What exists today
 
-- Vallhund Microbots™ (Boozy™ & Marshmallow™): desk humanoids with VH-MICRO-HAND-3F 3-finger hands, VH-PWR-2.0 3-rail power, and 50 Hz ONNX neural gait, serving as 1:1 sim-to-real surrogates for the Working Marlow quadruped. Status on the site: active lab fabrication & waitlist / builder kits.
-- Cordelia: a small box between the wall and a house phone that screens unknown callers. Status: in build.
+- Vallhund Microbots™ (Boozy™ and Marshmallow™): shipping consumer desk humanoids and the live testbed for the hand, power, and 50 Hz ONNX stack. Status on the site: lab fabrication and waitlist / builder kits.
+- Dexterous hands: VH-MICRO-HAND-3F 3-finger serial-bus hands, with a stated direction toward larger multi-DOF hands.
+- Power: VH-PWR-2.0 isolated multi-rail architecture.
 - The Vallhund arm: small robotic manipulation taught by demonstration. Status on the site: bench build.
 
-## Services
+## Concept architecture (not for sale, not in production)
 
-- Defense, autonomy & SOF-medical contracting: DoD SBIR/STTR/xTech prime & sub teaming, medic-eyes review, Phase I/II system design specifications, and standing SOF-medical SME.
+- Full-scale home and workspace humanoid concept, scaling the Boozy™ / Marshmallow™ brain and hand stack.
+- VH-MARLOW: autonomous utility quadruped concept for home, property, and commercial inspection.
+- Telepresence and sensory cockpit concept: 50 Hz XR / head-tracked teleoperation and an imitation-learning pipeline.

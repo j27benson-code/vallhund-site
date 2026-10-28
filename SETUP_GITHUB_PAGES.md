@@ -6,7 +6,7 @@ Everything you need is in the `Public_Site_GitHub` folder: `index.html` (the 3D 
 ## Part 1 — GitHub account + repo (~5 min)
 
 1. Go to **github.com** → Sign up. Suggested username: **vallhund-cybernetics** (or
-   **battlebuddy-project** if taken). Use your pm.me email. Turn on 2FA with your
+   another name if that one is taken). Use your pm.me email. Turn on 2FA with your
    authenticator app, same drill as everything else.
 2. Click **+** (top right) → **New repository**.
    - Name it exactly: **vallhund-cybernetics.github.io** (your username + `.github.io` —
@@ -45,8 +45,8 @@ Done. The arm model is live at your own domain, free hosting, HTTPS, no monthly 
 ## What stays private — permanent rule
 
 The repo and site carry the build only: the viewer, renders, and later the build-log.
-Never into the public repo: dollar figures, grant strategy or applications, VA benefit
-details, partner names before a yes, personal address. "Not hiding anything" applies to
+Never into the public repo: dollar figures, partner names before a yes, or a personal
+address. "Not hiding anything" applies to
 the engineering — the business file stays in the folder.
 
 ## Later (not today)
