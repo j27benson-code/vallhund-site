@@ -1,0 +1,21 @@
+# Vallhund Cybernetics
+
+> Vallhund Cybernetics is a veteran-owned robotics, embodied machine AI, defense autonomy, and battlefield medical systems company in Fayetteville, North Carolina, and a trade name (DBA) of KEMET Holdings LLC. It builds assistive, tactical, and casualty-care devices and desk humanoids that keep control and data with the person they serve, and offers consulting to SOF-medical companies.
+
+Mailing address: KEMET Holdings LLC, PO Box 25161, Fayetteville, NC 28314, USA.
+
+## Pages
+
+- [Home](https://vallhundcybernetics.com/): Embodied Machine AI, Defense & Offense Autonomy, Battlefield Medical & Casualty-Care Robotics, and SOF-medical contracting
+- [Vallhund Microbots™ (Boozy™ & Marshmallow™)](https://vallhundcybernetics.com/microbots/): Desk humanoids with articulated 3-finger micro hands (VH-MICRO-HAND-3F), 3-rail hot-swap power (VH-PWR-2.0), and local 50 Hz ONNX Embodied AI
+- [Vallhund arm, interactive 3D model](https://vallhundcybernetics.com/arm.html): the manipulation module in bench build
+
+## What exists today
+
+- Vallhund Microbots™ (Boozy™ & Marshmallow™): desk humanoids with VH-MICRO-HAND-3F 3-finger hands, VH-PWR-2.0 3-rail power, and 50 Hz ONNX neural gait, serving as 1:1 sim-to-real surrogates for the Working Marlow quadruped. Status on the site: active lab fabrication & waitlist / builder kits.
+- Cordelia: a small box between the wall and a house phone that screens unknown callers. Status: in build.
+- The Vallhund arm: small robotic manipulation taught by demonstration. Status on the site: bench build.
+
+## Services
+
+- Defense, autonomy & SOF-medical contracting: DoD SBIR/STTR/xTech prime & sub teaming, medic-eyes review, Phase I/II system design specifications, and standing SOF-medical SME.

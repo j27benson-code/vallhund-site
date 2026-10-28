@@ -2,213 +2,576 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Vallhund Cybernetics — veteran-owned, Fayetteville NC. We build the things that stand between a vulnerable person and harm, and build them so they can never be turned against that person. Consulting for SOF-medical companies: medic-eyes review, system design specs, standing SME.">
-<title>Vallhund Cybernetics</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<meta name="viewport" content="width=1440,initial-scale=1">
+<title>Vallhund Cybernetics — Embodied Machine AI, Defense Autonomy &amp; Battlefield Medical Robotics Lab</title>
+<meta name="description" content="Vallhund Cybernetics — veteran-owned embodied machine AI, defense autonomy, and battlefield medical robotics lab in Fayetteville, NC (DBA of KEMET Holdings LLC). Zero-cloud on-premise autonomy, dexterous manipulation hardware, and SOF-medical SME &amp; engineering specifications.">
+<link rel="canonical" href="https://vallhundcybernetics.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vallhund Cybernetics">
+<meta property="og:title" content="Vallhund Cybernetics — Embodied Machine AI, Defense Autonomy &amp; Battlefield Medical Robotics Lab">
+<meta property="og:description" content="Veteran-owned embodied machine AI, dexterous manipulation hardware, defense autonomy, and TCCC/JTS battlefield medical robotics lab in Fayetteville, NC.">
+<meta property="og:url" content="https://vallhundcybernetics.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://vallhundcybernetics.com/#org","name":"Vallhund Cybernetics","url":"https://vallhundcybernetics.com/","description":"Veteran-owned robotics and AI company in Fayetteville, North Carolina. Embodied machine AI, dexterous manipulation hardware, defense autonomy, and battlefield medical robotics and SOF-medical consulting.","address":{"@type":"PostalAddress","postOfficeBoxNumber":"25161","addressLocality":"Fayetteville","addressRegion":"NC","postalCode":"28314","addressCountry":"US"},"parentOrganization":{"@type":"Organization","name":"KEMET Holdings LLC"}},{"@type":"WebSite","@id":"https://vallhundcybernetics.com/#site","url":"https://vallhundcybernetics.com/","name":"Vallhund Cybernetics","publisher":{"@id":"https://vallhundcybernetics.com/#org"}}]}</script>
 <style>
-:root{--paper:#F7F8F5;--panel:#EDF0EA;--ink:#161C22;--muted:#59636C;--line:#C9CFC8;--accent:#1F6F5E;--accent-ink:#fff;--soft:#DDEDE6;color-scheme:light}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#121619;--panel:#1B2126;--ink:#EEF1ED;--muted:#A6AFB7;--line:#343C43;--accent:#5FC2A8;--accent-ink:#0F1A17;--soft:#1C3A32;color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#121619;--panel:#1B2126;--ink:#EEF1ED;--muted:#A6AFB7;--line:#343C43;--accent:#5FC2A8;--accent-ink:#0F1A17;--soft:#1C3A32;color-scheme:dark}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"Atkinson Hyperlegible",Verdana,sans-serif;font-size:17px;line-height:1.55;padding-inline:20px;padding-block:0 80px}
-.wrap{max-width:880px;margin:0 auto}
-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:22px;letter-spacing:.01em}
-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:wrap;font-size:14px;text-transform:uppercase;letter-spacing:.08em}
-nav a{color:var(--muted);text-decoration:none}
-nav a:hover,nav a:focus-visible{color:var(--accent)}
-header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
-.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 14px}
-h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw,46px);line-height:1.12;margin:0 0 18px;text-wrap:balance;max-width:20ch}
-.lede{font-size:20px;max-width:58ch;color:var(--muted);margin:0 0 26px}
-.hero .tag{display:inline-block;background:var(--soft);color:var(--accent);padding:6px 12px;border-radius:999px;font-size:14px;font-weight:700}
-section{padding:52px 0;border-bottom:1px solid var(--line)}
-h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:30px;margin:0 0 8px;text-wrap:balance}
-.sub{color:var(--muted);margin:0 0 28px;max-width:62ch}
-p{max-width:66ch}
-.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-.card{background:var(--panel);border-radius:10px;padding:20px 22px}
-.card h3{margin:0 0 8px;font-size:19px}
-.card p{margin:0;font-size:16px;color:var(--muted)}
-/* the ladder */
-.ladder{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.rung{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line);align-items:start}
-.rung:first-child{border-top:0}
-.layer{font-family:"Source Serif 4",Georgia,serif;font-size:15px;color:var(--muted);line-height:1.3}
-.layer b{display:block;font-size:26px;color:var(--ink);font-weight:600}
-.rung h3{margin:0 0 6px;font-size:21px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.chip{font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;font-weight:700;font-family:"Atkinson Hyperlegible",sans-serif}
-.chip.now{background:var(--accent);color:var(--accent-ink)}
-.chip.next{background:var(--soft);color:var(--accent)}
-.chip.concept{background:transparent;color:var(--muted);border:1px solid var(--line)}
-.rung p{margin:0;color:var(--muted);font-size:16px}
-.rung .builds{margin-top:8px;font-size:14px;color:var(--accent)}
-.promise{background:var(--panel);border-left:6px solid var(--accent);padding:22px 26px;border-radius:0 10px 10px 0;margin:22px 0}
-.promise h3{font-family:"Source Serif 4",Georgia,serif;font-size:24px;margin:0 0 10px}
-.promise .big{font-size:22px;font-weight:700;line-height:1.35;margin:0 0 14px}
-.promise ul{margin:0;padding-left:20px;color:var(--muted);font-size:16px}
-.promise li{margin-bottom:6px}
-.rules{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));list-style:none;padding:0;margin:0}
-.rules li{background:var(--panel);border-radius:10px;padding:16px 18px;font-size:16px}
-.rules li b{display:block;font-size:17px;margin-bottom:4px}
-footer{padding:40px 0 0;color:var(--muted);font-size:15px}
-footer .sig{font-family:"Source Serif 4",Georgia,serif;font-size:18px;color:var(--ink);margin-bottom:6px}
-.note{font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:8px;padding:10px 14px;margin-top:22px}
-@media (max-width:520px){.rung{grid-template-columns:1fr;gap:6px}.layer b{display:inline;font-size:18px;margin-right:6px}}
-a{color:var(--accent)}
-#ai .grid{grid-template-columns:repeat(2,1fr)}
-@media (max-width:640px){#ai .grid{grid-template-columns:1fr}}
-</style>
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap');
+    :root {
+      --bg: #06080B;
+      --bg-alt: #0A0E14;
+      --panel: rgba(13, 18, 26, 0.84);
+      --panel-solid: #0D121A;
+      --panel-hi: rgba(18, 26, 38, 0.92);
+      --ink: #F2F6FA;
+      --muted: #8C9BAE;
+      --line: rgba(0, 229, 255, 0.22);
+      --line-soft: rgba(255, 255, 255, 0.09);
+      --accent: #00E5FF;
+      --accent-ink: #04080C;
+      --secondary: #FFB020;
+      --badge-bg: rgba(0, 229, 255, 0.11);
+      --font-title: 'Space Grotesk', 'Inter', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 4px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.75), inset 0 1px 0 rgba(0,229,255,0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 18% 18%, rgba(0, 229, 255, 0.14) 0%, rgba(255, 176, 32, 0.06) 38%, rgba(6, 8, 11, 0.98) 78%),
+        linear-gradient(to right, rgba(0, 229, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 229, 255, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    .telemetry-ribbon {
+      background: linear-gradient(90deg, #05070A 0%, var(--panel-solid) 50%, #05070A 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .telemetry-ribbon .pulse-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      margin-right: 8px;
+    }
+    .telemetry-ribbon b { color: var(--accent); }
+    .telemetry-ribbon .amber { color: var(--secondary); font-weight: 700; }
+    .wrap { max-width: 1368px; margin: 0 auto; padding: 0 36px 56px; }
+    nav.top-deck {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 20px;
+    }
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-crest {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(0, 229, 255,0.22), rgba(0,0,0,0.8));
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--accent);
+      box-shadow: 0 0 18px rgba(0, 229, 255, 0.25);
+    }
+    .brand-title {
+      font-family: var(--font-title);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+    }
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      list-style: none;
+      margin: 0; padding: 0;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-links a.active {
+      color: var(--accent-ink);
+      background: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.35);
+    }
+    .nav-links a.parent-switch {
+      color: var(--secondary);
+      border: 1px solid rgba(255, 176, 32, 0.45);
+      background: rgba(255, 176, 32, 0.10);
+      font-weight: 700;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 32px;
+      padding: 34px 0 32px;
+      border-bottom: 1px solid var(--line);
+      align-items: stretch;
+    }
+    .eyebrow-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 12px;
+      background: var(--badge-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .eyebrow-bar span.pat {
+      background: var(--secondary);
+      color: #090B0E;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+    h1.display-hero {
+      font-family: var(--font-title);
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.04;
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+    }
+    h1.display-hero em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .lede {
+      font-size: 16.5px;
+      color: var(--muted);
+      margin: 0 0 20px;
+      max-width: 64ch;
+    }
+    .cta-cluster {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .btn-lux {
+      background: linear-gradient(135deg, var(--accent), rgba(0, 229, 255, 0.82));
+      color: var(--accent-ink);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 13px 22px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: none;
+      box-shadow: 0 10px 28px rgba(0, 229, 255, 0.30);
+    }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      text-decoration: none;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi-cell {
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .kpi-cell b {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 19px;
+      color: var(--ink);
+    }
+    .kpi-cell span {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .lux-card {
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .mono-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: var(--badge-bg);
+      color: var(--accent);
+      border: 1px solid var(--line);
+    }
+    .mono-tag.gold {
+      background: rgba(255, 176, 32, 0.14);
+      color: var(--secondary);
+      border-color: rgba(255, 176, 32, 0.4);
+    }
+    .dual-bot-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      background: var(--panel-hi);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .bot-viewport {
+      background: #07090D;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bot-viewport img {
+      width: 100%;
+      height: 295px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .bot-meta {
+      padding: 11px 13px;
+      font-size: 12.5px;
+    }
+    .bot-meta h4 {
+      margin: 0 0 4px;
+      font-family: var(--font-title);
+      font-size: 18px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bot-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    section.deck-sec {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+    .sec-head h2 {
+      font-family: var(--font-title);
+      font-size: 30px;
+      margin: 4px 0 0;
+      line-height: 1.1;
+    }
+    .sec-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 56ch;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .spec-list {
+      margin: 10px 0 0;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .spec-list li { margin-bottom: 5px; }
+    .spec-list b { color: var(--ink); }
+    .img-banner {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+      background: #080A0E;
+    }
+    .tier-price {
+      font-family: var(--font-title);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 6px 0;
+    }
+    .tier-price small {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    footer.lux-foot {
+      padding-top: 26px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .apache-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    
+    </style>
 </head>
 <body>
 
+<div class="telemetry-ribbon">
+  <div><span class="pulse-dot"></span><b>VALLHUND CYBERNETICS // FORT BRAGG · FAYETTEVILLE NC CORRIDOR</b></div>
+  <div><span class="amber">SDVOSB // DBA OF KEMET HOLDINGS LLC</span> &nbsp;·&nbsp; ON-PREM MACHINE AI // TCCC-JTS PROTOCOL LOCK // PROPRIETARY HARDWARE</div>
+</div>
 
 <div class="wrap">
-<nav>
-  <div class="brand">Vallhund Cybernetics</div>
-  <ul><li><a href="#stack">The stack</a></li><li><a href="#ai">AI + lab</a></li><li><a href="#cordelia">Cordelia</a></li><li><a href="#promise">The promise</a></li><li><a href="#services">Services</a></li><li><a href="#about">About</a></li></ul>
-</nav>
-
-<header class="hero">
-  <p class="eyebrow">Robotics and AI · Fayetteville, North Carolina · veteran-owned</p>
-  <h1>We build the things that stand between a vulnerable person and harm.</h1>
-  <p class="lede">And we build them so they can never be turned against that person. Control stays with the person. Data stays with the person. Everything else is a body for that idea.</p>
-  <span class="tag">First product in build · bench trials winter 2026</span>
-</header>
-
-<section id="stack">
-  <h2>One idea, five bodies</h2>
-  <p class="sub">Each product pays for, proves, or physically builds the next. Cheapest first, expensive last. What's marked <em>concept</em> is exactly that — where we're going, not what you can buy.</p>
-  <ol class="ladder">
-    <li class="rung">
-      <div class="layer"><b>0</b>The harness</div>
+  <nav class="top-deck">
+    <a href="/" class="brand-lockup">
+      <div class="brand-crest">VC</div>
       <div>
-        <h3>Cordelia <span class="chip now">In build</span></h3>
-        <p>A small box that plugs in between the wall and a house phone. Unknown callers are asked who they are before the phone rings; family comes straight through. An evening check-in call, one line a night to the family, a doctor printout on request. Everything stays on the box. No account, no cloud, no AI.</p>
-        <div class="builds">Proves a family will put a Vallhund box in the kitchen.</div>
+        <div class="brand-title">VALLHUND CYBERNETICS</div>
+        <span class="brand-sub">EMBODIED MACHINE AI · DEFENSE &amp; OFFENSE AUTONOMY · BATTLEFIELD MEDICAL SYSTEMS</span>
       </div>
-    </li>
-    <li class="rung">
-      <div class="layer"><b>1</b>The hands</div>
-      <div>
-        <h3>The Vallhund arm <span class="chip next">Bench build</span></h3>
-        <p>Small robotic manipulation taught by demonstration — you show it, it learns; no vendor cloud in the loop. Built first for an assistive companion: pick up what was dropped, hand it over, let go the moment a person pulls.</p>
-        <div class="builds">The proof-of-competency for everything above it.</div>
-      </div>
-    </li>
-    <li class="rung">
-      <div class="layer"><b>2</b>The factory</div>
-      <div>
-        <h3>The arm builds the harness <span class="chip concept">Concept</span></h3>
-        <p>A small enclosed cell where the same arm packs and assembles Cordelia kits. Our first manufacturing customer is us. Small runs, North Carolina, no slide decks.</p>
-        <div class="builds">Margin on every box; the product line builds the product line.</div>
-      </div>
-    </li>
-    <li class="rung">
-      <div class="layer"><b>3</b>The medic's hands</div>
-      <div>
-        <h3>Casualty care on the move <span class="chip concept">Concept</span></h3>
-        <p>The same idea, in the field: a medic keeps control of the machine carrying a casualty through nothing that can be jammed, spoofed, or taken from him, and a care module that says "protocol says," never "give." Designed by someone who has carried the litter.</p>
-        <div class="builds">The defense lane. Details on request, under NDA.</div>
-      </div>
-    </li>
-    <li class="rung">
-      <div class="layer"><b>4</b>The carriers</div>
-      <div>
-        <h3>Ground, then air <span class="chip concept">Concept</span></h3>
-        <p>Everything above is built base-agnostic: it rides on the mule the customer already owns, and later on whatever flies. We don't build the base. We build what goes on it.</p>
-      </div>
-    </li>
-    <li class="rung">
-      <div class="layer"><b>5</b>The companion</div>
-      <div>
-        <h3>A small dog, on purpose <span class="chip concept">Concept</span></h3>
-        <p>Where this started: a service animal for a veteran, built by people who know what a service animal costs and how long the wait is. Small and harmless-looking, because anything with a face frightens the people it's for. It joins a home Cordelia already protects, and it ships last.</p>
-        <div class="builds">The body the whole stack earns.</div>
-      </div>
-    </li>
-  </ol>
-</section>
-
-<section id="ai">
-  <h2>Robots and AI are the company. The lab is where they live.</h2>
-  <p class="sub">Nothing we sell today has "AI" on the label. That's deliberate. The AI is the shop that builds everything on this page — and it runs on our own hardware, under our own control.</p>
-  <div class="grid">
-    <div class="card"><h3>The harness</h3><p>The company runs on its own AI operating layer: a lead agent on a small server in the lab, a bigger machine that wakes for heavy inference, open-source models alongside commercial ones so no vendor can switch us off or read our work. It drafts, checks, tracks, and schedules. One person with an AI staff — that is how a one-person shop turns a spec around in days.</p></div>
-    <div class="card"><h3>The lab</h3><p>Today it's a home lab: bench, servers, the arm, the phone box, a 3D printer and a CNC path. It becomes the office lab as the company earns it — more compute, more open-weight models running locally, more bodies on the bench. Everything we build is developed and tested here first, on hardware we own.</p></div>
-    <div class="card"><h3>The medical AI harness</h3><p>The defense lane: a care module that rides with the casualty and a tether that keeps the medic in control. Built from open protocols — TCCC, JTS, the medic's own scope of practice — so a stressed medic has "protocol says" in front of him, never "the machine decided." AI-driven, reviewed by a surgical team anywhere, and unable to act on its own. Concept stage; designed by someone who has carried the litter.</p></div>
-    <div class="card"><h3>The microfactory</h3><p>Robotic arms taught by demonstration — you show it, it learns — packing and assembling Cordelia kits in a small enclosed cell. Our first manufacturing customer is us. The same arm that will hand a dropped remote back to a person first earns its keep building the box that protects that person. Small runs, North Carolina, AI-run, human-checked.</p></div>
-  </div>
-  <p>The rule that ties it together: <b>AI at the back, never at the front.</b> It writes the rules at our desk, runs the arms in our cell, and reads the protocols for the medic. It never touches a customer's data, because there is none to touch, and it never holds control that a person can't take back with a button, a leash, or an unplugged cord.</p>
-</section>
-
-<section id="cordelia">
-  <h2>Cordelia</h2>
-  <p class="sub">Keep the wolves away from the door, and remember for them so the doctor doesn't have to guess.</p>
-  <div class="grid">
-    <div class="card"><h3>The phone</h3><p>Plugs in between the wall jack and the phone they already have. Same number. If the box ever loses power, the phone works exactly as before — that's wired in, not promised.</p></div>
-    <div class="card"><h3>Who's calling?</h3><p>People on the family's list ring straight through, name spoken first. Everyone else is asked to say who they are. No "detecting scams" — we verify the real and let the rest wait.</p></div>
-    <div class="card"><h3>The evening call</h3><p>One ring at the time they choose. "How's tonight, one to ten?" Press a number. "Where?" Press a number. Under thirty seconds. Logged on the box, nowhere else.</p></div>
-    <div class="card"><h3>One line to family</h3><p>Every night: "Checked in. Two unknown calls, both declined." Never the details. No text by nine means someone calls Mom — which is the product working.</p></div>
-    <div class="card"><h3>For the doctor</h3><p>One button prints a dated one-page body map and timeline from their own words — the same clipboard the clinic uses, filled in at home over months.</p></div>
-    <div class="card"><h3>The fridge card</h3><p>Three rules and a family word — the part that works even without the box. Free. We give it away.</p></div>
-  </div>
-  <p class="note">No account. No cloud. No AI. Your phone, just quieter.</p>
-</section>
-
-<section id="promise">
-  <h2>The Cordelia Promise</h2>
-  <p class="sub">Not a policy. A structural fact about how the box is built — and the reason a family picks us over a company that wants their data.</p>
-  <div class="promise">
-    <h3>Your information stays in your house.</h3>
-    <p class="big">We don't collect it. We never see it. We never sell it. Unplug it and it's gone.</p>
-    <ul>
-      <li>Everything — the call list, the check-ins, the family's numbers — lives on the box in the house. No Vallhund server holds a copy. There is nothing to breach, nothing to subpoena, nothing an investor can ask us to sell.</li>
-      <li>The only thing that leaves the house is the nightly line to family, encrypted end to end. The family holds the keys; we can't read it.</li>
-      <li>The box never knows a name. Updates are signed; only we can push code, and updates go <em>in</em> — nothing comes out.</li>
-      <li>No remote access without someone in the house pressing a button.</li>
-      <li>It works after we're gone. No cloud means the box keeps working even if this company disappears tomorrow.</li>
-      <li>Provable, not promised: the box's code will be open, and the plain-English threat model published.</li>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#pillars" class="active">3 Core Divisions</a></li>
+      <li><a href="#medical">TCCC / JTS Casualty Care</a></li>
+      <li><a href="#hardware">Hardware Stack &amp; Fleet</a></li>
+      <li><a href="#contracting">DoD / SBIR / SME Contracting</a></li>
+      <li><a href="/microbots/" class="parent-switch">⚡ Consumer Drop: Vallhund Microbots™ (Boozy™ &amp; Marshmallow™) →</a></li>
     </ul>
-  </div>
-  <p>Selling or sharing customer data is not a part of this business that we are choosing to forgo. It is not a part of this business at all. If the company fails because of that, fine.</p>
-</section>
+  </nav>
 
-<section id="rules">
-  <h2>How we build</h2>
-  <p class="sub">Five rules, carried from the first product to the last.</p>
-  <ul class="rules">
-    <li><b>Verify the real; don't detect the fake.</b> The only thing that beats an AI voice clone is knowing who's actually on the list.</li>
-    <li><b>Fail safe in hardware.</b> If our part dies, their part keeps working. Wired that way, not promised.</li>
-    <li><b>The smallest, least threatening body that can do the job.</b> A box before a screen. A phone call before a tablet. A rope before a radio. A small dog before anything with a face.</li>
-    <li><b>Control stays with the person.</b> Taught by demonstration, held by a leash, told "protocol says" — never handed to a cloud.</li>
-    <li><b>AI at the back, never at the front.</b> We use it to write the rules at our desk. It never touches a customer's data, because there is none to touch.</li>
-  </ul>
-</section>
+  <header class="hero-grid">
+    <div>
+      <div class="eyebrow-bar">
+        <span>FAYETTEVILLE / FT. BRAGG, NC · SDVOSB</span>
+        <span class="pat">ZERO CLOUD · 100% ON-PREMISE AUTONOMY</span>
+      </div>
+      <h1 class="display-hero">Embodied Machine AI Built for the <em>Contested Edge</em> &amp; the Casualty Litter.</h1>
+      <p class="lede"><b>Vallhund Cybernetics</b> (a veteran-owned DBA of <b>KEMET Holdings LLC</b>, founded by a retired U.S. Army Special Operations Civil Affairs Combat Medic &amp; SUAS Program Manager) engineers sovereign embodied machine intelligence, dexterous manipulation hardware, attritable tactical robotics, and <b>TCCC / JTS</b> battlefield casualty-care systems that never surrender human control to a cloud.</p>
 
-<section id="services">
-  <h2>Services, while we build</h2>
-  <p class="sub">What pays the bills now: the medic in the room for small companies building for the battlefield.</p>
-  <div class="grid">
-    <div class="card"><h3>Medic-eyes review</h3><p>Your proposal, spec, or prototype plan, read by someone who has knelt on a casualty. What a medic would do with it, where it fails in the dark or in the cold or with gloves on, and what to fix before the sponsor sees it.</p></div>
-    <div class="card"><h3>System design specification</h3><p>Your funded Phase I turned into the document your engineers build from and your Phase II cites: requirements, interfaces, use cases, protocol mapping, test criteria. Most recent: a hemorrhage-simulation system spec for an AFWERX awardee.</p></div>
-    <div class="card"><h3>Standing SME</h3><p>Hours a month on call. Design questions answered, test plans reviewed, the medic on the sponsor call.</p></div>
-  </div>
-</section>
+      <div class="cta-cluster">
+        <a href="#contracting" class="btn-lux">Request Defense / Medical Capability Brief (NDA) →</a>
+        <a href="/microbots/" class="btn-ghost">Visit Vallhund Microbots™ (Boozy™ &amp; Marshmallow™) ↗</a>
+        <a href="#medical" class="btn-ghost">SOF-Medical SME &amp; AFWERX Spec Architecture</a>
+      </div>
 
-<section id="about">
-  <h2>About</h2>
-  <p>Vallhund Cybernetics is a one-person, veteran-owned company in Fayetteville, North Carolina. The founder served as an Army combat medic and then in Special Operations Civil Affairs — the medic on a four-man team — and ran his unit's unmanned-aircraft program before retiring. He builds what's on this page himself: the code, the fabrication, the specs. The company runs on its own AI operating layer — one person, with an AI staff that drafts, checks, and tracks — which is how a one-person shop turns a spec around in days, not months. The AI stays at the desk; it never touches a customer's data or a customer's box.</p>
-  <p>The name is a small Swedish herding dog: short legs, long back, bred to work close to the ground and keep the herd together. Cordelia is the shepherd moon that keeps a planet's ring in place — and Lear's daughter, the one who stayed.</p>
-  <p>Company: a trade name of KEMET Holdings LLC, a service-disabled veteran-owned small business.</p>
-</section>
+      <div class="kpi-strip">
+        <div class="kpi-cell"><b>0 CLOUD</b><span>Air-Gapped On-Premise AI Inference</span></div>
+        <div class="kpi-cell"><b>TCCC / JTS</b><span>"Protocol Says, Never Machine Decides"</span></div>
+        <div class="kpi-cell"><b>50 Hz</b><span>Sim-to-Real ONNX &amp; VH-QDD Actuation</span></div>
+        <div class="kpi-cell"><b>FT. BRAGG</b><span>SOF Medic + Unmanned Systems Heritage</span></div>
+      </div>
+    </div>
 
-<footer>
-  <div class="sig">Vallhund Cybernetics · Fayetteville, North Carolina</div>
-  <div><a href="mailto:john@vallhundcybernetics.com">john@vallhundcybernetics.com</a> · <a href="https://x.com/VallhundProject">@VallhundProject</a> · <a href="/arm.html">the arm, in 3D</a></div>
-  <p class="note">Everything marked <em>concept</em> is a direction, not a product. Nothing on this page collects anything about you; there is no analytics script on it.</p>
-</footer>
+    <div class="lux-card" id="hardware" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--panel-hi)">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <span class="mono-tag gold">ACTIVE HARDWARE FLEET // SIM-TO-REAL TRANSFER</span>
+          <span class="mono-tag">SHA-256 VERIFIED LAB CELL</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:12px">
+          <img src="/assets/looks/boozy-macro-humanoid.png" alt="Vallhund Embodied AI Surrogate with VH-MICRO-HAND-3F and 42F Telemetry HUD" style="width:100%;height:255px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line)">
+          <img src="/assets/looks/vh-micro-hand-3f-hero.png" alt="VH-MICRO-HAND-3F Dexterous 3-Finger Hand" style="width:100%;height:255px;object-fit:cover;object-position:left center;border-radius:var(--radius);border:1px solid var(--line)">
+        </div>
+      </div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:12px">
+        <div><b style="color:var(--accent);font-family:var(--font-mono);display:block">VH-MICRO-HAND-3F</b>Proprietary 3-Finger Rigid 4-Bar Dexterous Hand</div>
+        <div><b style="color:var(--secondary);font-family:var(--font-mono);display:block">VH-PWR-2.0 MODULE</b>30A 3-Rail Isolated Hot-Swap Power Architecture</div>
+        <div><b style="color:var(--ink);font-family:var(--font-mono);display:block">WORKING MARLOW</b>Full-Scale Utility &amp; Service Quadruped Platform</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="deck-sec" id="pillars">
+    <div class="sec-head">
+      <div>
+        <span class="mono-tag gold">THREE SOVEREIGN R&amp;D &amp; CONTRACTING DIVISIONS</span>
+        <h2>One Unified Machine AI &amp; Fabrication Stack Across Three Critical Lanes</h2>
+      </div>
+      <p>Every actuator bus, local vision/voice policy, and power cartridge proven on our high-cadence micro-humanoid bench transfers directly into tactical and medical field systems.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="lux-card">
+        <span class="mono-tag">PILLAR 01 // EMBODIED MACHINE AI</span>
+        <h3 style="margin:10px 0 8px;font-family:var(--font-title);font-size:23px">Embodied Machine AI &amp; Dexterous Manipulation</h3>
+        <ul class="spec-list">
+          <li><b>Air-Gapped Multi-Modal Brains:</b> Vision, audio, and <code>50 Hz</code> ONNX action policies running 100% on-premise with zero vendor cloud dependency.</li>
+          <li><b>Dexterous End-Effectors (<code>VH-MICRO-HAND-3F</code>):</b> Proprietary 3-finger rigid dorsal 4-bar linkage hands with real-time serial-bus load compliance.</li>
+          <li><b>Sim-to-Real Fleet:</b> High-frequency policy transfer from <b>Boozy™</b> &amp; <b>Marshmallow™</b> bipedal surrogates to our <b>Working Marlow</b> quadruped and <code>VH-QDD</code> quasi-direct-drive actuators.</li>
+        </ul>
+      </div>
+
+      <div class="lux-card">
+        <span class="mono-tag gold">PILLAR 02 // DEFENSE &amp; OFFENSE AUTONOMY</span>
+        <h3 style="margin:10px 0 8px;font-family:var(--font-title);font-size:23px">Defense &amp; Offense Autonomous Systems Contracting</h3>
+        <ul class="spec-list">
+          <li><b>Comms-Denied Edge Autonomy:</b> Unmanned ground and aerial payloads engineered to operate when GPS, satcom, and RF links are jammed or contested.</li>
+          <li><b>Attritable Micro-Robotics &amp; Base-Agnostic Payloads:</b> Modular sensor, manipulation, and tether packages that bolt onto existing DoD ground mules and sUAS airframes.</li>
+          <li><b>Rapid Fort Bragg Corridor Fabrication:</b> In-house multi-material additive &amp; CNC prototyping cell with full cryptographic SHA-256 artifact provenance for DoD / Army SBIR, STTR, xTech &amp; prime/sub teaming.</li>
+        </ul>
+      </div>
+
+      <div class="lux-card" id="medical">
+        <span class="mono-tag">PILLAR 03 // BATTLEFIELD MEDICAL &amp; CASUALTY CARE</span>
+        <h3 style="margin:10px 0 8px;font-family:var(--font-title);font-size:23px">Battlefield Medical &amp; Casualty-Care Robotics</h3>
+        <ul class="spec-list">
+          <li><b>Autonomous Casualty Tether &amp; Care Module:</b> Jam-proof physical tether keeping the combat medic in absolute command of the unmanned litter carrier, paired with a clinical module built strictly on <b>TCCC / JTS</b> guidelines—displaying <i>"protocol says," never "the machine decided."</i></li>
+          <li><b>Trauma &amp; Hemorrhage Simulation Engineering:</b> Phase I / Phase II system design specifications, protocol mapping, and hardware verification (recent precedent: hemorrhage-simulation system engineering spec for an <b>AFWERX</b> awardee).</li>
+          <li><b>Standing SOF-Medical SME Review:</b> Proposal, prototype, and human-factors stress testing by a retired Special Operations Civil Affairs medic who has carried the litter in the dark, cold, and mud.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="deck-sec" id="contracting">
+    <div class="sec-head">
+      <div>
+        <span class="mono-tag">DOCTRINE, PROVENANCE &amp; CONTRACTING READINESS</span>
+        <h2>Built by a Special Operations Combat Medic &amp; Unmanned Systems Operator</h2>
+      </div>
+      <p>We do not build slideware. Our internal AI operating layer and physical H2C fabrication cell turn funded Phase I concepts into verified hardware and Phase II engineering specs in days.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="lux-card">
+        <span class="mono-tag gold">RULE 01 // HARDWARE FAIL-SAFE</span>
+        <h4 style="margin:8px 0 6px;font-size:18px">Control Never Leaves the Operator</h4>
+        <p style="margin:0;color:var(--muted);font-size:13.5px">Whether it is a combat medic holding a physical casualty-evacuation tether or a veteran commanding a service quadruped, human override is hard-wired in physical hardware—never gated behind a remote server or cloud API.</p>
+      </div>
+      <div class="lux-card">
+        <span class="mono-tag">RULE 02 // PRIME &amp; SUB TEAMING</span>
+        <h4 style="margin:8px 0 6px;font-size:18px">DoD SBIR / STTR / xTech &amp; Medical Specs</h4>
+        <p style="margin:0;color:var(--muted);font-size:13.5px">Available for prime/subcontracting across Army xTech, Defense SBIR/STTR, AFWERX/SOFWERX trauma &amp; robotics sprints, system design specifications, and standing SOF-medical Subject Matter Expert (SME) retainers.</p>
+      </div>
+      <div class="lux-card" style="border-color:var(--accent)">
+        <span class="mono-tag gold">CONSUMER SPIN-OUT // LIVE NOW</span>
+        <h4 style="margin:8px 0 6px;font-size:18px">Vallhund Microbots™ (Boozy™ &amp; Marshmallow™)</h4>
+        <p style="margin:0 0 12px;color:var(--muted);font-size:13.5px">Looking for our viral desk humanoids from TikTok &amp; X? Our commercial micro-robotics division puts the exact same <code>VH-MICRO-HAND-3F</code> hands, <code>VH-PWR-2.0</code> power stack, and <code>50 Hz</code> ONNX brain on your desk.</p>
+        <a href="/microbots/" class="btn-lux" style="display:inline-block;padding:9px 14px;font-size:11px">Launch /microbots Product Showcase →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="lux-foot">
+    <div>
+      <b style="color:var(--ink);font-size:14px">Vallhund Cybernetics · Fayetteville / Fort Bragg, North Carolina</b><br>
+      A Trade Name (DBA) of <b>KEMET Holdings LLC</b> · Service-Disabled Veteran-Owned Small Business (SDVOSB) · P.O. Box 25161, Fayetteville, NC 28314 · <a href="mailto:john@vallhundcybernetics.com" style="color:var(--accent)">john@vallhundcybernetics.com</a> · <a href="https://x.com/VallhundProject" style="color:var(--accent)">@VallhundProject</a> · <a href="/microbots/" style="color:var(--accent)">Vallhund Microbots™</a> · <a href="/arm.html" style="color:var(--accent)">The Arm (3D)</a>
+    </div>
+    <div><span class="mono-tag">NO ANALYTICS // ZERO TELEMETRY COLLECTION</span> &nbsp; <span class="mono-tag gold">PROPRIETARY ARCHITECTURE (VH-MICRO-HAND-3F / VH-PWR-2.0)</span></div>
+    <div class="apache-box">
+      <b>Open-Source &amp; Legal Provenance Notice (Apache License 2.0):</b> All Vallhund Cybernetics hardware architectures, <code>VH-MICRO-HAND-3F</code> dexterous hand mechanisms, <code>VH-PWR-2.0</code> 3-rail power modules, casualty-care tether specifications, and Vallhund Microbots™ (<code>Boozy™</code> &amp; <code>Marshmallow™</code>) exterior armor shells are proprietary works of Vallhund Cybernetics / KEMET Holdings LLC. Baseline bipedal locomotion solver routines incorporate open-source software licensed under the Apache License, Version 2.0.
+    </div>
+  </footer>
 </div>
 
 </body>
