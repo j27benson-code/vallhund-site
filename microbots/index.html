@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://vallhundcybernetics.com/microbots/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://vallhundcybernetics.com/#org","name":"Vallhund Cybernetics","url":"https://vallhundcybernetics.com/","description":"Veteran-owned robotics and AI company in Fayetteville, North Carolina. Embodied machine AI, dexterous manipulation hardware, defense autonomy, and battlefield medical robotics and SOF-medical consulting.","address":{"@type":"PostalAddress","postOfficeBoxNumber":"25161","addressLocality":"Fayetteville","addressRegion":"NC","postalCode":"28314","addressCountry":"US"},"parentOrganization":{"@type":"Organization","name":"KEMET Holdings LLC"}},{"@type":"WebPage","@id":"https://vallhundcybernetics.com/microbots/#webpage","url":"https://vallhundcybernetics.com/microbots/","name":"Vallhund Microbots™ — Boozy™ & Marshmallow™ Embodied AI Humanoids","isPartOf":{"@id":"https://vallhundcybernetics.com/#site"},"about":{"@id":"https://vallhundcybernetics.com/#org"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://vallhundcybernetics.com/#org","name":"Vallhund Cybernetics","url":"https://vallhundcybernetics.com/","description":"Commercial robotics engineering company in Fayetteville, North Carolina. Embodied machine AI, dexterous manipulation hardware, and power systems. Vallhund Microbots is its consumer desk-robotics line.","address":{"@type":"PostalAddress","postOfficeBoxNumber":"25161","addressLocality":"Fayetteville","addressRegion":"NC","postalCode":"28314","addressCountry":"US"},"parentOrganization":{"@type":"Organization","name":"KEMET Holdings LLC"}},{"@type":"WebPage","@id":"https://vallhundcybernetics.com/microbots/#webpage","url":"https://vallhundcybernetics.com/microbots/","name":"Vallhund Microbots™ — Boozy™ & Marshmallow™ Embodied AI Humanoids","isPartOf":{"@id":"https://vallhundcybernetics.com/#site"},"about":{"@id":"https://vallhundcybernetics.com/#org"}}]}</script>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap');
     :root {
@@ -421,6 +421,27 @@
       color: var(--muted);
       line-height: 1.45;
     }
+    .crumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 14px 0 0;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .crumb a { color: var(--secondary); text-decoration: none; font-weight: 700; }
+    .crumb b { color: var(--ink); }
+    .crumb-note {
+      margin-left: auto;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+    }
     
         .arch-light-band {
           background: linear-gradient(180deg, #F4F5F1 0%, #EAECE6 100%);
@@ -447,8 +468,8 @@
 <body>
 
 <div class="telemetry-ribbon">
-  <div><span class="pulse-dot"></span><b>VALLHUND MICROBOTS™ // BIO DIRECT DROP</b></div>
-  <div><span class="amber">PROPRIETARY ARCHITECTURE (VH-MICRO-HAND-3F / VH-PWR-2.0)</span> &nbsp;·&nbsp; 50 HZ ONNX // ZERO CLOUD // FAYETTEVILLE · FT. BRAGG NC</div>
+  <div><span class="pulse-dot"></span><b>VALLHUND MICROBOTS™ // A LINE OF VALLHUND CYBERNETICS</b></div>
+  <div><span class="amber">BOOZY™ &amp; MARSHMALLOW™</span> &nbsp;·&nbsp; 50 HZ ONNX // VH-MICRO-HAND-3F // VH-PWR-2.0 // FAYETTEVILLE, NC</div>
 </div>
 
 <div class="wrap">
@@ -457,17 +478,24 @@
       <div class="brand-crest">VH</div>
       <div>
         <div class="brand-title">VALLHUND MICROBOTS™</div>
-        <span class="brand-sub">BY VALLHUND CYBERNETICS · VETERAN-OWNED EMBODIED AI LAB</span>
+        <span class="brand-sub">CONSUMER DESK ROBOTICS · A LINE OF VALLHUND CYBERNETICS</span>
       </div>
     </a>
     <ul class="nav-links">
       <li><a href="#cast" class="active">Boozy™ &amp; Marshmallow™</a></li>
-      <li><a href="#hands">VH-MICRO-HAND-3F (3-Finger Hand)</a></li>
-      <li><a href="#power">VH-PWR-2.0 (3-Rail Power)</a></li>
-      <li><a href="#tiers">Builder Kits &amp; Allocation</a></li>
-      <li><a href="/" class="parent-switch">↗ Parent Lab: Defense · Medical · Machine AI (vallhundcybernetics.com/)</a></li>
+      <li><a href="#hands">Hands &amp; Power</a></li>
+      <li><a href="#tiers">Builder Kits</a></li>
+      <li><a href="/founders/">Founders &amp; Contact</a></li>
+      <li><a href="/" class="parent-switch">Vallhund Cybernetics →</a></li>
     </ul>
   </nav>
+
+  <div class="crumb">
+    <a href="/">Vallhund Cybernetics</a>
+    <span aria-hidden="true">/</span>
+    <b>Vallhund Microbots™</b>
+    <span class="crumb-note">Consumer desk robotics · Boozy™ &amp; Marshmallow™</span>
+  </div>
 
   <header class="hero-grid" id="cast">
     <div>
@@ -476,12 +504,12 @@
         <span class="pat">PROPRIETARY HARDWARE: VH-MICRO-HAND-3F &amp; VH-PWR-2.0</span>
       </div>
       <h1 class="display-hero">Meet <em>Boozy™</em> &amp; <em>Marshmallow™</em>: Desk Humanoids With Real Hands &amp; Local Brains.</h1>
-      <p class="lede">Engineered and fabricated in Fayetteville, North Carolina by <b>Vallhund Cybernetics</b>. Full humanoid silhouettes with sculpted shoulder pods, 15° contoured arms, <b>Track B 3-Finger Articulated Micro Hands (<code>VH-MICRO-HAND-3F</code>)</b>, <b>30A 3-Rail Hot-Swap Power (<code>VH-PWR-2.0</code>)</b>, and on-premise <b>50 Hz ONNX</b> locomotion + <b>Talk / See / Listen</b> Embodied AI.</p>
+      <p class="lede"><b>Vallhund Microbots™</b> is the consumer desk-robotics line of <a href="/" style="color:var(--accent)">Vallhund Cybernetics</a> — home of <b>Boozy™</b> and <b>Marshmallow™</b>, our small, fun desk humanoids. Engineered and fabricated in Fayetteville, North Carolina. Full humanoid silhouettes with sculpted shoulder pods, 15° contoured arms, <b>Track B 3-Finger Articulated Micro Hands (<code>VH-MICRO-HAND-3F</code>)</b>, <b>30A 3-Rail Hot-Swap Power (<code>VH-PWR-2.0</code>)</b>, and on-premise <b>50 Hz ONNX</b> locomotion plus talk, see, and listen embodied AI.</p>
 
       <div class="cta-cluster">
         <a href="#tiers" class="btn-lux">Reserve Day-1 Allocation ($29 – $4,499) →</a>
         <a href="#hands" class="btn-ghost">Inspect VH-MICRO-HAND-3F &amp; VH-PWR-2.0 Specs</a>
-        <a href="/" class="btn-ghost">Explore Defense &amp; Medical Parent Lab ↗</a>
+        <a href="/" class="btn-ghost">Vallhund Cybernetics master plan ↗</a>
       </div>
 
       <div class="kpi-strip">
@@ -561,7 +589,7 @@
         <span class="mono-tag">DIRECT LAB ALLOCATION // FAYETTEVILLE, NC H2C CELL</span>
         <h2>Vallhund Microbots™ Waitlist &amp; Builder Kit Tiers</h2>
       </div>
-      <p>Every serialized kit transfers 1:1 across our mini-humanoid cast and funds our full-scale <b>Working Marlow</b> service quadruped program.</p>
+      <p>Every serialized kit is a desk humanoid in the Vallhund Microbots™ line. The quadruped on the company page, <b>VH-MARLOW</b>, is a concept architecture and is not part of these kits.</p>
     </div>
 
     <div class="grid-4">
@@ -601,10 +629,10 @@
       <div class="lux-card" style="border-color:var(--secondary)">
         <span class="mono-tag gold">TIER 04 · TURNKEY SERIALIZED PAIR</span>
         <div class="tier-price">$999 – $4,499 <small>BENCH-TESTED</small></div>
-        <h4 style="margin:0 0 6px;font-size:16px">Serialized Turnkey Bot or Working Marlow Founder</h4>
+        <h4 style="margin:0 0 6px;font-size:16px">Serialized Turnkey Desk Humanoid</h4>
         <ul class="spec-list">
           <li><b>$999 Turnkey Humanoid:</b> Assembled, zeroed &amp; walk-tested in Fayetteville, NC with SHA-256 certificate</li>
-          <li><b>$4,499 Founder Allocation (#001–#005):</b> Ships Turnkey <b>Boozy™</b> + locks Founder Serial for <b>Working Marlow</b> quadruped</li>
+          <li><b>$4,499 Serialized Allocation (#001–#005):</b> Ships a bench-tested turnkey <b>Boozy™</b>, serialized in Fayetteville</li>
         </ul>
       </div>
     </div>
@@ -612,8 +640,8 @@
 
   <footer class="lux-foot">
     <div>
-      <b style="color:var(--ink);font-size:14px">Vallhund Microbots™ · A Product Division of Vallhund Cybernetics (DBA of KEMET Holdings LLC)</b><br>
-      Veteran-Owned · Fayetteville / Fort Bragg Corridor, North Carolina · <a href="mailto:john@vallhundcybernetics.com" style="color:var(--accent)">john@vallhundcybernetics.com</a> · Proprietary Architecture (<code>VH-MICRO-HAND-3F</code> / <code>VH-PWR-2.0</code>) · <a href="https://x.com/VallhundProject" style="color:var(--accent)">@VallhundProject</a> · <a href="/" style="color:var(--accent)">Parent Lab</a> · <a href="/arm.html" style="color:var(--accent)">The Arm (3D)</a>
+      <b style="color:var(--ink);font-size:14px">Vallhund Microbots™ · The consumer desk-robotics line of <a href="/" style="color:var(--accent)">Vallhund Cybernetics</a></b><br>
+      A trade name of KEMET Holdings LLC · Fayetteville, North Carolina · <a href="mailto:john@vallhundcybernetics.com" style="color:var(--accent)">john@vallhundcybernetics.com</a> · <a href="https://x.com/VallhundProject" style="color:var(--accent)">@VallhundProject</a> · <a href="/" style="color:var(--accent)">Vallhund Cybernetics</a> · <a href="/founders/" style="color:var(--accent)">Founders &amp; Contact</a> · <a href="/arm.html" style="color:var(--accent)">The Arm (3D)</a>
     </div>
     <div><span class="mono-tag">SHA-256 PROVENANCE VERIFIED</span> &nbsp; <span class="mono-tag gold">MADE IN NORTH CAROLINA, USA</span></div>
     <div class="apache-box">
