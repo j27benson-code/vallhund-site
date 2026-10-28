@@ -438,6 +438,34 @@
       text-transform: uppercase;
       color: var(--secondary);
     }
+    .ai-sphere {
+      position: relative;
+      background: #07090d;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 300px;
+    }
+    .ai-sphere canvas {
+      display: block;
+      width: 100%;
+      height: 300px;
+      touch-action: none;
+      cursor: grab;
+    }
+    .ai-sphere canvas:active { cursor: grabbing; }
+    .sphere-hint {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(156, 214, 232, 0.78);
+      pointer-events: none;
+    }
     
     </style>
 </head>
@@ -491,12 +519,12 @@
     <div class="lux-card" id="hardware" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--panel-hi)">
       <div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-          <span class="mono-tag gold">INSIDE THE ROBOT WE SHIP</span>
-          <span class="mono-tag">FAYETTEVILLE LAB</span>
+          <span class="mono-tag gold">EMBODIED AI FIELD</span>
+          <span class="mono-tag">60 FPS · ON THIS PAGE</span>
         </div>
-        <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:12px">
-          <img src="/assets/looks/boozy-macro-humanoid.png" alt="Vallhund Embodied AI Surrogate with VH-MICRO-HAND-3F and 42F Telemetry HUD" style="width:100%;height:255px;object-fit:cover;border-radius:var(--radius);border:1px solid var(--line)">
-          <img src="/assets/looks/vh-micro-hand-3f-hero.png" alt="VH-MICRO-HAND-3F Dexterous 3-Finger Hand" style="width:100%;height:255px;object-fit:cover;object-position:left center;border-radius:var(--radius);border:1px solid var(--line)">
+        <div class="ai-sphere">
+          <canvas id="ai-sphere" role="img" aria-label="A sphere of glowing cyan, ice-blue, and white particles. Drag to rotate. Hover or tap to send a ripple across the surface."></canvas>
+          <p class="sphere-hint">Drag to rotate · hover or tap to ripple</p>
         </div>
       </div>
       <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:12px">
@@ -626,5 +654,262 @@
   </footer>
 </div>
 
+<script>
+(function () {
+  var canvas = document.getElementById('ai-sphere');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d', { alpha: false });
+  var N = 6400;
+  var bx = new Float32Array(N);
+  var by = new Float32Array(N);
+  var bz = new Float32Array(N);
+  var tone = new Uint8Array(N);
+  var GA = Math.PI * (3 - Math.sqrt(5));
+  var i;
+  for (i = 0; i < N; i++) {
+    var yy = 1 - (i / (N - 1)) * 2;
+    var rad = Math.sqrt(Math.max(0, 1 - yy * yy));
+    var th = GA * i;
+    bx[i] = Math.cos(th) * rad;
+    by[i] = yy;
+    bz[i] = Math.sin(th) * rad;
+    tone[i] = (i % 11 === 0) ? 2 : ((i % 3 === 0) ? 1 : 0);
+  }
+  var colors = ['0,229,255', '158,214,255', '244,252,255'];
+  var yaw = 0.4;
+  var pitch = -0.18;
+  var velYaw = 0;
+  var velPitch = 0;
+  var dragging = false;
+  var lastX = 0;
+  var lastY = 0;
+  var moved = 0;
+  var ripples = [];
+  var running = false;
+  var raf = 0;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = 1;
+  var cssW = 1;
+  var cssH = 1;
+
+  function resize() {
+    var rect = canvas.getBoundingClientRect();
+    cssW = Math.max(2, rect.width);
+    cssH = Math.max(2, rect.height);
+    dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+  }
+
+  function addRipple(vx, vy, vz, amp) {
+    var inv = invRotate(vx, vy, vz);
+    var len = Math.hypot(inv[0], inv[1], inv[2]) || 1;
+    ripples.push({ x: inv[0] / len, y: inv[1] / len, z: inv[2] / len, t0: performance.now(), amp: amp });
+    if (ripples.length > 4) ripples.shift();
+  }
+
+  function pointerOnSphere(clientX, clientY) {
+    var rect = canvas.getBoundingClientRect();
+    var px = clientX - rect.left;
+    var py = clientY - rect.top;
+    var cx = cssW * 0.5;
+    var cy = cssH * 0.5;
+    var focal = Math.min(cssW, cssH) * 0.9;
+    var camZ = 3.05;
+    var dirx = (px - cx) / focal;
+    var diry = (py - cy) / focal;
+    var dirz = -1;
+    var a = dirx * dirx + diry * diry + dirz * dirz;
+    var b = 2 * camZ * dirz;
+    var c = camZ * camZ - 1;
+    var disc = b * b - 4 * a * c;
+    if (disc >= 0) {
+      var t = (-b - Math.sqrt(disc)) / (2 * a);
+      if (t > 0) return [t * dirx, t * diry, camZ + t * dirz];
+    }
+    var nx = px - cx;
+    var ny = py - cy;
+    var nlen = Math.hypot(nx, ny) || 1;
+    return [nx / nlen, ny / nlen, 0.15];
+  }
+
+  function invRotate(x, y, z) {
+    var cp = Math.cos(-pitch);
+    var sp = Math.sin(-pitch);
+    var y1 = y * cp - z * sp;
+    var z1 = y * sp + z * cp;
+    var cy = Math.cos(-yaw);
+    var sy = Math.sin(-yaw);
+    return [x * cy + z1 * sy, y1, -x * sy + z1 * cy];
+  }
+
+  function frame(now) {
+    var t = reduce ? 0 : now * 0.001;
+    if (!dragging && !reduce) {
+      yaw += 0.0021 + velYaw;
+      pitch += velPitch;
+      velYaw *= 0.94;
+      velPitch *= 0.94;
+      if (pitch > 1.05) pitch = 1.05;
+      if (pitch < -1.05) pitch = -1.05;
+    }
+    var cyaw = Math.cos(yaw);
+    var syaw = Math.sin(yaw);
+    var cpitch = Math.cos(pitch);
+    var spitch = Math.sin(pitch);
+    var alive = [];
+    var r;
+    for (r = 0; r < ripples.length; r++) {
+      if (now - ripples[r].t0 < 2400) alive.push(ripples[r]);
+    }
+    ripples = alive;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    if (reduce) {
+      ctx.fillStyle = '#07090d';
+      ctx.fillRect(0, 0, cssW, cssH);
+    } else {
+      ctx.fillStyle = 'rgba(7,9,13,0.38)';
+      ctx.fillRect(0, 0, cssW, cssH);
+    }
+    var cx = cssW * 0.5;
+    var cy = cssH * 0.5;
+    var focal = Math.min(cssW, cssH) * 0.9;
+    var camZ = 3.05;
+    var glow = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.min(cssW, cssH) * 0.42);
+    glow.addColorStop(0, 'rgba(0,229,255,0.07)');
+    glow.addColorStop(1, 'rgba(0,229,255,0)');
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(cx, cy, Math.min(cssW, cssH) * 0.46, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.globalCompositeOperation = 'lighter';
+    for (i = 0; i < N; i++) {
+      var x = bx[i];
+      var y = by[i];
+      var z = bz[i];
+      var dx = 0.16 * Math.sin(y * 5.2 + t * 0.72) + 0.07 * Math.cos(z * 4.1 - t * 0.46);
+      var dy = 0.15 * Math.cos(x * 4.6 + t * 0.58) + 0.06 * Math.sin(z * 6.0 + t * 0.51);
+      var dz = 0.15 * Math.sin(x * 5.0 - t * 0.49) + 0.07 * Math.cos(y * 3.6 + t * 0.63);
+      var dot = dx * x + dy * y + dz * z;
+      x += dx - dot * x;
+      y += dy - dot * y;
+      z += dz - dot * z;
+      for (r = 0; r < ripples.length; r++) {
+        var rp = ripples[r];
+        var ex = x - rp.x;
+        var ey = y - rp.y;
+        var ez = z - rp.z;
+        var d2 = ex * ex + ey * ey + ez * ez;
+        if (d2 > 2.4) continue;
+        var dist = Math.sqrt(d2);
+        var age = (now - rp.t0) * 0.001;
+        var wave = Math.sin(dist * 17 - age * 18) * Math.exp(-dist * 2.15) * Math.exp(-age * 1.35);
+        var push = wave * 0.3 * rp.amp;
+        x += x * push;
+        y += y * push;
+        z += z * push;
+      }
+      var inv = 1 / (Math.hypot(x, y, z) || 1);
+      x *= inv;
+      y *= inv;
+      z *= inv;
+      var x1 = x * cyaw + z * syaw;
+      var z1 = -x * syaw + z * cyaw;
+      var y2 = y * cpitch - z1 * spitch;
+      var z2 = y * spitch + z1 * cpitch;
+      var scale = focal / (camZ - z2);
+      var sx = cx + x1 * scale;
+      var sy = cy + y2 * scale;
+      var depth = (z2 + 1) * 0.5;
+      var alpha = 0.12 + depth * 0.88;
+      var size = 0.8 + depth * 1.7;
+      ctx.fillStyle = 'rgba(' + colors[tone[i]] + ',' + alpha.toFixed(3) + ')';
+      ctx.fillRect(sx, sy, size, size);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    if (running) raf = requestAnimationFrame(frame);
+  }
+
+  function poke(clientX, clientY, amp) {
+    var p = pointerOnSphere(clientX, clientY);
+    addRipple(p[0], p[1], p[2], amp);
+    if (reduce) frame(performance.now());
+  }
+
+  canvas.addEventListener('pointerdown', function (ev) {
+    dragging = true;
+    moved = 0;
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+    velYaw = 0;
+    velPitch = 0;
+    canvas.setPointerCapture(ev.pointerId);
+    poke(ev.clientX, ev.clientY, 1);
+  });
+  canvas.addEventListener('pointermove', function (ev) {
+    if (dragging) {
+      var dx = ev.clientX - lastX;
+      var dy = ev.clientY - lastY;
+      moved += Math.abs(dx) + Math.abs(dy);
+      yaw += dx * 0.008;
+      pitch += dy * 0.008;
+      if (pitch > 1.05) pitch = 1.05;
+      if (pitch < -1.05) pitch = -1.05;
+      velYaw = dx * 0.008;
+      velPitch = dy * 0.008;
+      lastX = ev.clientX;
+      lastY = ev.clientY;
+      if (reduce) frame(performance.now());
+      return;
+    }
+    if (ev.pointerType === 'mouse' && nowHover(ev)) poke(ev.clientX, ev.clientY, 0.55);
+  });
+  var lastHover = 0;
+  function nowHover(ev) {
+    var n = performance.now();
+    if (n - lastHover < 90) return false;
+    lastHover = n;
+    return true;
+  }
+  canvas.addEventListener('pointerup', function (ev) {
+    dragging = false;
+    if (moved < 8) poke(ev.clientX, ev.clientY, 1.15);
+    try { canvas.releasePointerCapture(ev.pointerId); } catch (err) {}
+  });
+  canvas.addEventListener('pointercancel', function () { dragging = false; });
+
+  function start() {
+    if (running) return;
+    running = true;
+    raf = requestAnimationFrame(frame);
+  }
+  function stop() {
+    running = false;
+    if (raf) cancelAnimationFrame(raf);
+  }
+
+  resize();
+  window.addEventListener('resize', function () {
+    resize();
+    if (reduce) frame(performance.now());
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) stop();
+    else if (!reduce) start();
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !document.hidden && !reduce) start();
+      else stop();
+    }, { threshold: 0.05 });
+    io.observe(canvas);
+  }
+  if (reduce) frame(performance.now());
+  else start();
+})();
+</script>
 </body>
 </html>
