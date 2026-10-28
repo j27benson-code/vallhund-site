@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440,initial-scale=1">
+<title>Vallhund Microbots™ — Boozy™ &amp; Marshmallow™ Embodied AI Humanoids | Vallhund Cybernetics</title>
+<meta name="description" content="Vallhund Microbots™ by Vallhund Cybernetics — Home of Boozy™ and Marshmallow™, desk humanoids with articulated 3-finger micro hands (VH-MICRO-HAND-3F), 3-rail power (VH-PWR-2.0), and local 50 Hz ONNX Embodied AI. Built in Fayetteville, NC.">
+<link rel="canonical" href="https://vallhundcybernetics.com/microbots/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vallhund Cybernetics">
+<meta property="og:title" content="Vallhund Microbots™ — Boozy™ &amp; Marshmallow™ Embodied AI Humanoids">
+<meta property="og:description" content="Desk humanoids with articulated 3-finger micro hands (VH-MICRO-HAND-3F), 30A 3-rail hot-swap power (VH-PWR-2.0), and on-premise 50 Hz ONNX Embodied AI.">
+<meta property="og:url" content="https://vallhundcybernetics.com/microbots/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/plain" title="llms.txt" href="/llms.txt">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://vallhundcybernetics.com/#org","name":"Vallhund Cybernetics","url":"https://vallhundcybernetics.com/","description":"Veteran-owned robotics and AI company in Fayetteville, North Carolina. Embodied machine AI, dexterous manipulation hardware, defense autonomy, and battlefield medical robotics and SOF-medical consulting.","address":{"@type":"PostalAddress","postOfficeBoxNumber":"25161","addressLocality":"Fayetteville","addressRegion":"NC","postalCode":"28314","addressCountry":"US"},"parentOrganization":{"@type":"Organization","name":"KEMET Holdings LLC"}},{"@type":"WebPage","@id":"https://vallhundcybernetics.com/microbots/#webpage","url":"https://vallhundcybernetics.com/microbots/","name":"Vallhund Microbots™ — Boozy™ & Marshmallow™ Embodied AI Humanoids","isPartOf":{"@id":"https://vallhundcybernetics.com/#site"},"about":{"@id":"https://vallhundcybernetics.com/#org"}}]}</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Rajdhani:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap');
+    :root {
+      --bg: #0B0D11;
+      --bg-alt: #F3F4F0;
+      --panel: rgba(20, 24, 31, 0.88);
+      --panel-solid: #14181F;
+      --panel-hi: rgba(28, 33, 43, 0.95);
+      --ink: #F7F8F5;
+      --muted: #9AA3B0;
+      --line: rgba(212, 175, 55, 0.32);
+      --line-soft: rgba(255, 255, 255, 0.11);
+      --accent: #D4AF37;
+      --accent-ink: #0A0C0F;
+      --secondary: #38BDF8;
+      --badge-bg: rgba(212, 175, 55, 0.14);
+      --font-title: 'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --shadow: 0 24px 60px rgba(0,0,0,0.65), inset 0 1px 0 rgba(212,175,55,0.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(circle at 75% 20%, rgba(212, 175, 55, 0.18) 0%, rgba(56, 189, 248, 0.08) 42%, rgba(11, 13, 17, 0.98) 80%),
+        linear-gradient(to right, rgba(212, 175, 55, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(212, 175, 55, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15.5px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    .telemetry-ribbon {
+      background: linear-gradient(90deg, #05070A 0%, var(--panel-solid) 50%, #05070A 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .telemetry-ribbon .pulse-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      margin-right: 8px;
+    }
+    .telemetry-ribbon b { color: var(--accent); }
+    .telemetry-ribbon .amber { color: var(--secondary); font-weight: 700; }
+    .wrap { max-width: 1368px; margin: 0 auto; padding: 0 36px 56px; }
+    nav.top-deck {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      gap: 20px;
+    }
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-crest {
+      width: 40px; height: 40px;
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(212, 175, 55,0.22), rgba(0,0,0,0.8));
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--accent);
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+    }
+    .brand-title {
+      font-family: var(--font-title);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+    }
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      list-style: none;
+      margin: 0; padding: 0;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-links a.active {
+      color: var(--accent-ink);
+      background: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+    }
+    .nav-links a.parent-switch {
+      color: var(--secondary);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      background: rgba(56, 189, 248, 0.10);
+      font-weight: 700;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 32px;
+      padding: 34px 0 32px;
+      border-bottom: 1px solid var(--line);
+      align-items: stretch;
+    }
+    .eyebrow-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 12px;
+      background: var(--badge-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .eyebrow-bar span.pat {
+      background: var(--secondary);
+      color: #090B0E;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+    h1.display-hero {
+      font-family: var(--font-title);
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.04;
+      margin: 0 0 14px;
+      letter-spacing: -0.01em;
+    }
+    h1.display-hero em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .lede {
+      font-size: 16.5px;
+      color: var(--muted);
+      margin: 0 0 20px;
+      max-width: 64ch;
+    }
+    .cta-cluster {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .btn-lux {
+      background: linear-gradient(135deg, var(--accent), rgba(212, 175, 55, 0.82));
+      color: var(--accent-ink);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 12.5px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 13px 22px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: none;
+      box-shadow: 0 10px 28px rgba(212, 175, 55, 0.30);
+    }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      text-decoration: none;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi-cell {
+      border-left: 2px solid var(--accent);
+      padding-left: 10px;
+    }
+    .kpi-cell b {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 19px;
+      color: var(--ink);
+    }
+    .kpi-cell span {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .lux-card {
+      background: var(--panel);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .mono-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+      background: var(--badge-bg);
+      color: var(--accent);
+      border: 1px solid var(--line);
+    }
+    .mono-tag.gold {
+      background: rgba(56, 189, 248, 0.14);
+      color: var(--secondary);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+    .dual-bot-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      background: var(--panel-hi);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .bot-viewport {
+      background: #07090D;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bot-viewport img {
+      width: 100%;
+      height: 295px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .bot-meta {
+      padding: 11px 13px;
+      font-size: 12.5px;
+    }
+    .bot-meta h4 {
+      margin: 0 0 4px;
+      font-family: var(--font-title);
+      font-size: 18px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bot-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    section.deck-sec {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .sec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      gap: 16px;
+    }
+    .sec-head h2 {
+      font-family: var(--font-title);
+      font-size: 30px;
+      margin: 4px 0 0;
+      line-height: 1.1;
+    }
+    .sec-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 56ch;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .spec-list {
+      margin: 10px 0 0;
+      padding-left: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .spec-list li { margin-bottom: 5px; }
+    .spec-list b { color: var(--ink); }
+    .img-banner {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+      background: #080A0E;
+    }
+    .tier-price {
+      font-family: var(--font-title);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 6px 0;
+    }
+    .tier-price small {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    footer.lux-foot {
+      padding-top: 26px;
+      font-size: 12.5px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .apache-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius);
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    
+        .arch-light-band {
+          background: linear-gradient(180deg, #F4F5F1 0%, #EAECE6 100%);
+          color: #11151C;
+          border-top: 2px solid #D4AF37;
+          border-bottom: 2px solid #D4AF37;
+          padding: 44px 36px;
+          margin: 28px -36px;
+        }
+        .arch-light-band h2, .arch-light-band h3, .arch-light-band b { color: #0B0E14 !important; }
+        .arch-light-band p, .arch-light-band li, .arch-light-band .sub { color: #374151 !important; }
+        .arch-light-band .lux-card {
+          background: #FFFFFF !important;
+          border: 1px solid rgba(17, 21, 28, 0.14) !important;
+          box-shadow: 0 18px 40px rgba(15, 20, 28, 0.08) !important;
+        }
+        .arch-light-band .mono-tag {
+          background: #11151C !important;
+          color: #D4AF37 !important;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="telemetry-ribbon">
+  <div><span class="pulse-dot"></span><b>VALLHUND MICROBOTS™ // BIO DIRECT DROP</b></div>
+  <div><span class="amber">PROPRIETARY ARCHITECTURE (VH-MICRO-HAND-3F / VH-PWR-2.0)</span> &nbsp;·&nbsp; 50 HZ ONNX // ZERO CLOUD // FAYETTEVILLE · FT. BRAGG NC</div>
+</div>
+
+<div class="wrap">
+  <nav class="top-deck">
+    <a href="/" class="brand-lockup">
+      <div class="brand-crest">VH</div>
+      <div>
+        <div class="brand-title">VALLHUND MICROBOTS™</div>
+        <span class="brand-sub">BY VALLHUND CYBERNETICS · VETERAN-OWNED EMBODIED AI LAB</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#cast" class="active">Boozy™ &amp; Marshmallow™</a></li>
+      <li><a href="#hands">VH-MICRO-HAND-3F (3-Finger Hand)</a></li>
+      <li><a href="#power">VH-PWR-2.0 (3-Rail Power)</a></li>
+      <li><a href="#tiers">Builder Kits &amp; Allocation</a></li>
+      <li><a href="/" class="parent-switch">↗ Parent Lab: Defense · Medical · Machine AI (vallhundcybernetics.com/)</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero-grid" id="cast">
+    <div>
+      <div class="eyebrow-bar">
+        <span>VALLHUND MICROBOTS™ FLAGSHIP SERIES</span>
+        <span class="pat">PROPRIETARY HARDWARE: VH-MICRO-HAND-3F &amp; VH-PWR-2.0</span>
+      </div>
+      <h1 class="display-hero">Meet <em>Boozy™</em> &amp; <em>Marshmallow™</em>: Desk Humanoids With Real Hands &amp; Local Brains.</h1>
+      <p class="lede">Engineered and fabricated in Fayetteville, North Carolina by <b>Vallhund Cybernetics</b>. Full humanoid silhouettes with sculpted shoulder pods, 15° contoured arms, <b>Track B 3-Finger Articulated Micro Hands (<code>VH-MICRO-HAND-3F</code>)</b>, <b>30A 3-Rail Hot-Swap Power (<code>VH-PWR-2.0</code>)</b>, and on-premise <b>50 Hz ONNX</b> locomotion + <b>Talk / See / Listen</b> Embodied AI.</p>
+
+      <div class="cta-cluster">
+        <a href="#tiers" class="btn-lux">Reserve Day-1 Allocation ($29 – $4,499) →</a>
+        <a href="#hands" class="btn-ghost">Inspect VH-MICRO-HAND-3F &amp; VH-PWR-2.0 Specs</a>
+        <a href="/" class="btn-ghost">Explore Defense &amp; Medical Parent Lab ↗</a>
+      </div>
+
+      <div class="kpi-strip">
+        <div class="kpi-cell"><b>20 DOF</b><span>STS3215 + 6× SCS0009 Hand Bus</span></div>
+        <div class="kpi-cell"><b>50 Hz</b><span>On-Premise ONNX Neural Gait</span></div>
+        <div class="kpi-cell"><b>30.0 A</b><span>VH-PWR-2.0 3-Rail Peak Authority</span></div>
+        <div class="kpi-cell"><b>100%</b><span>Closed-Source Vallhund Armor CAD</span></div>
+      </div>
+    </div>
+
+    <div class="dual-bot-stage">
+      <div class="bot-viewport">
+        <img src="/assets/looks/boozy-full-humanoid-cycles.png" alt="Boozy™ (VH-BOOZY-R1.1) Full Humanoid with Arms, 3-Finger Hands, and 42F Chest HUD">
+        <div class="bot-meta">
+          <h4><span>Boozy™</span> <span class="mono-tag gold">VH-BOOZY-R1.1</span></h4>
+          <p><b>Iridescent Silk Purple &amp; Gold Brawler Humanoid:</b> Crested helmet, <code>42F</code> Chest Watch HUD cradle, sculpted shoulder pods + 15° arms, <b>VH-MICRO-HAND-3F</b> 3-finger hands, and 1080p POV stereo vision.</p>
+        </div>
+      </div>
+      <div class="bot-viewport">
+        <img src="/assets/looks/marshmallow-visor-glow.jpg" alt="Marshmallow™ (VH-MARSHMALLOW-R1.0) Matte-White Cyberpunk Astronaut Humanoid with 8x32 LED Matrix Visor and 3-Finger Hands">
+        <div class="bot-meta">
+          <h4><span>Marshmallow™</span> <span class="mono-tag">VH-MARSHMALLOW-R1.0</span></h4>
+          <p><b>Matte-White Cyberpunk Astronaut Humanoid:</b> Dark smoked visor with programmable <code>8×32 WS2812B</code> RGB LED dot-matrix face, motorized <code>STS3215</code> shoulder-swing arms (<code>IDs 15–16</code>), and <b>VH-MICRO-HAND-3F</b> hands.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="deck-sec arch-light-band" id="hands">
+    <div class="sec-head">
+      <div>
+        <span class="mono-tag gold">PROPRIETARY SUBSYSTEM ARCHITECTURE // VALLHUND LAB</span>
+        <h2>Articulated 3-Finger Micro Hands &amp; 3-Rail Hot-Swap Power</h2>
+      </div>
+      <p>Every Vallhund Microbots™ humanoid ships with complete upper-body manipulation and brownout-proof 3-rail power—never an armless walker chassis.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="lux-card">
+        <img class="img-banner" src="/assets/looks/vh-micro-hand-3f-hero.png" alt="VH-MICRO-HAND-3F Track B 3-Finger Micro Hand CAD Spec">
+        <span class="mono-tag">VH-MICRO-HAND-3F // TRACK B LOCKED</span>
+        <h3 style="margin:8px 0 6px;font-family:var(--font-title);font-size:22px">3-Finger Rigid 4-Bar Micro Hand</h3>
+        <ul class="spec-list">
+          <li><b>2 Parallel Fingers + Opposing Thumb:</b> <code>42.0 mm</code> micro palm with rigid <code>25.5 mm</code> dorsal 4-bar linkage bars (zero fragile tendon strings).</li>
+          <li><b>Track B Independent Bus Actuation:</b> <code>3× Feetech SCS0009</code> TTL serial-bus servos per hand (Left <code>IDs 17–19</code>, Right <code>IDs 25–27</code>) on the main 1 Mbps Waveshare bus.</li>
+          <li><b>Compliant Force Handoff:</b> Real-time bus load sensing enables <code>80 ms</code> human take-over release, index-finger tool trigger pull, and expressive hand gestures.</li>
+        </ul>
+      </div>
+
+      <div class="lux-card" id="power">
+        <img class="img-banner" src="/assets/looks/boozy-arms-assembly-clean.png" alt="VH-BOOZY-1.0-ARM-KIT Bolt-On Shoulder Pods and 15-Degree Contoured Arms">
+        <span class="mono-tag gold">VH-PWR-2.0 // 3-RAIL CARTRIDGE</span>
+        <h3 style="margin:8px 0 6px;font-family:var(--font-title);font-size:22px">3-Rail Brownout-Proof Power Module</h3>
+        <ul class="spec-list">
+          <li><b>Rail A (<code>HV_ACT</code> 7.4V–8.4V @ 30A):</b> Dual <code>Molicel INR-18650-P30B</code> high-drain cells + low-ESR polymer bulk caps driving <code>14× STS3215</code> body/arm servos with <code>&lt;0.15V</code> sag.</li>
+          <li><b>Rail B (<code>HAND_6V</code> Regulated 8A/12A):</b> Dedicated synchronous step-down rail protecting all <code>6× SCS0009</code> micro-hand servos under sustained grip load.</li>
+          <li><b>Rail C (<code>BRAIN_5V</code> Isolated 5.1V 5A):</b> Galvanically isolated compute, camera, audio &amp; <code>8×32</code> RGB visor rail with ideal-diode <code>&lt;10s</code> hot-swap bridge.</li>
+        </ul>
+      </div>
+
+      <div class="lux-card">
+        <img class="img-banner" src="/assets/looks/boozy-v2-backpack.png" alt="Local Embodied AI Brain and USB-C Bot Life Livestream Backpack">
+        <span class="mono-tag">ON-PREMISE EMBODIED MACHINE AI</span>
+        <h3 style="margin:8px 0 6px;font-family:var(--font-title);font-size:22px">Eyes + Ears + Voice + 50 Hz ONNX Brain</h3>
+        <ul class="spec-list">
+          <li><b>50 Hz Neural Locomotion:</b> Sim-to-real MuJoCo ONNX policy + <code>GY-BNO085</code> 9-DOF IMU balance loop + <code>15-Trick Studio</code> &amp; Retro Gridiron <code>#00 / #26</code> collector shells.</li>
+          <li><b>Local Vision &amp; Audio Loop:</b> <code>NexiGo N60</code> 1080p POV eye camera + stereo mic array running local Whisper speech recognition &amp; person/hand tracking.</li>
+          <li><b>Zero Cloud Subscriptions:</b> Every weight file, voice loop, and teleop cockpit runs 100% on-premise under your physical control.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="deck-sec" id="tiers">
+    <div class="sec-head">
+      <div>
+        <span class="mono-tag">DIRECT LAB ALLOCATION // FAYETTEVILLE, NC H2C CELL</span>
+        <h2>Vallhund Microbots™ Waitlist &amp; Builder Kit Tiers</h2>
+      </div>
+      <p>Every serialized kit transfers 1:1 across our mini-humanoid cast and funds our full-scale <b>Working Marlow</b> service quadruped program.</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="lux-card">
+        <span class="mono-tag">TIER 01 · SIMULATION &amp; SDK</span>
+        <div class="tier-price">$29 <small>INSTANT REPO</small></div>
+        <h4 style="margin:0 0 6px;font-size:16px">50 Hz ONNX Sim &amp; Embodied Brain SDK</h4>
+        <ul class="spec-list">
+          <li>MuJoCo <code>50 Hz</code> ONNX walking &amp; upper-body gesture policies</li>
+          <li>Local Talk/See/Listen Python bridge + WebXR <code>50 Hz</code> Avatar Cockpit</li>
+          <li>Full wiring schematics for <code>VH-MICRO-HAND-3F</code> &amp; <code>VH-PWR-2.0</code></li>
+        </ul>
+      </div>
+
+      <div class="lux-card">
+        <span class="mono-tag">TIER 02 · PRINTED ARMOR + HANDS</span>
+        <div class="tier-price">$249 <small>EARLY BIRD</small></div>
+        <h4 style="margin:0 0 6px;font-size:16px">H2C Printed Humanoid Shell &amp; 3F Hand Kit</h4>
+        <ul class="spec-list">
+          <li>Complete H2C-printed humanoid armor (choose <b>Boozy™</b> or <b>Marshmallow™</b>)</li>
+          <li>Assembled <b>VH-MICRO-HAND-3F</b> 3-finger hand pair + shoulder pods &amp; 15° arms</li>
+          <li><code>16× 6804-2RS</code> bearings + <code>M2/M3</code> brass insert &amp; fastener pack</li>
+        </ul>
+      </div>
+
+      <div class="lux-card" style="border-color:var(--accent)">
+        <span class="mono-tag gold">TIER 03 · COMPLETE DIY HUMANOID</span>
+        <div class="tier-price">$599 <small>FULL HARDWARE KIT</small></div>
+        <h4 style="margin:0 0 6px;font-size:16px">Complete Boozy™ or Marshmallow™ DIY Kit</h4>
+        <ul class="spec-list">
+          <li>Everything in Tier 02 + <code>STS3215</code> bus servos &amp; <code>6× SCS0009</code> micro-hand servos</li>
+          <li><b>VH-PWR-2.0</b> 3-rail hot-swap power module + Waveshare TTL bus controller</li>
+          <li>1080p POV camera, stereo mic array, and <code>8×32</code> RGB visor / <code>42F</code> HUD cradle</li>
+        </ul>
+      </div>
+
+      <div class="lux-card" style="border-color:var(--secondary)">
+        <span class="mono-tag gold">TIER 04 · TURNKEY SERIALIZED PAIR</span>
+        <div class="tier-price">$999 – $4,499 <small>BENCH-TESTED</small></div>
+        <h4 style="margin:0 0 6px;font-size:16px">Serialized Turnkey Bot or Working Marlow Founder</h4>
+        <ul class="spec-list">
+          <li><b>$999 Turnkey Humanoid:</b> Assembled, zeroed &amp; walk-tested in Fayetteville, NC with SHA-256 certificate</li>
+          <li><b>$4,499 Founder Allocation (#001–#005):</b> Ships Turnkey <b>Boozy™</b> + locks Founder Serial for <b>Working Marlow</b> quadruped</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="lux-foot">
+    <div>
+      <b style="color:var(--ink);font-size:14px">Vallhund Microbots™ · A Product Division of Vallhund Cybernetics (DBA of KEMET Holdings LLC)</b><br>
+      Veteran-Owned · Fayetteville / Fort Bragg Corridor, North Carolina · <a href="mailto:john@vallhundcybernetics.com" style="color:var(--accent)">john@vallhundcybernetics.com</a> · Proprietary Architecture (<code>VH-MICRO-HAND-3F</code> / <code>VH-PWR-2.0</code>) · <a href="https://x.com/VallhundProject" style="color:var(--accent)">@VallhundProject</a> · <a href="/" style="color:var(--accent)">Parent Lab</a> · <a href="/arm.html" style="color:var(--accent)">The Arm (3D)</a>
+    </div>
+    <div><span class="mono-tag">SHA-256 PROVENANCE VERIFIED</span> &nbsp; <span class="mono-tag gold">MADE IN NORTH CAROLINA, USA</span></div>
+    <div class="apache-box">
+      <b>Open-Source Attribution &amp; IP Provenance Notice (Apache License 2.0):</b> Vallhund Microbots™, Boozy™ (<code>VH-BOOZY-R1.1</code>), Marshmallow™ (<code>VH-MARSHMALLOW-R1.0</code>), the <code>VH-MICRO-HAND-3F</code> 3-finger rigid 4-bar linkage micro hand, and the <code>VH-PWR-2.0</code> 3-rail power cartridge are original closed-source hardware and sculptural designs by <b>Vallhund Cybernetics</b> (© 2026 Vallhund Cybernetics, all rights reserved). Baseline lower-body bipedal kinematic solver weights incorporate open-source software licensed under the Apache License, Version 2.0. Independent robotics product; not affiliated with or endorsed by any third-party entertainment studio or smartwatch manufacturer.
+    </div>
+  </footer>
+</div>
+
+</body>
+</html>
