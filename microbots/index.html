@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vallhund Microbots™ — Boozy™ &amp; Marshmallow™ Embodied AI Humanoids | Vallhund Cybernetics</title>
 <meta name="description" content="Vallhund Microbots™ by Vallhund Cybernetics — Home of Boozy™ and Marshmallow™, desk humanoids with articulated 3-finger micro hands (VH-MICRO-HAND-3F), 3-rail power (VH-PWR-2.0), and local 50 Hz ONNX Embodied AI. Built in Fayetteville, NC.">
 <link rel="canonical" href="https://vallhundcybernetics.com/microbots/">
@@ -462,7 +462,37 @@
           background: #11151C !important;
           color: #D4AF37 !important;
         }
-        
+    html, body { overflow-x: hidden; }
+    img, video, svg { max-width: 100%; height: auto; }
+    .nav-links, .top-deck { flex-wrap: wrap; }
+    @media (max-width: 960px) {
+      .wrap { padding: 0 20px 48px; }
+      .telemetry-ribbon { flex-wrap: wrap; gap: 6px; padding: 8px 20px; }
+      .telemetry-ribbon > div { flex: 1 1 100%; }
+      .hero-grid, .grid-3, .grid-2, .dual-bot-stage { grid-template-columns: 1fr; }
+      .kpi-strip, .grid-4 { grid-template-columns: 1fr 1fr; }
+      nav.top-deck { align-items: flex-start; }
+      h1.display-hero { font-size: 34px; }
+      .sec-head { flex-direction: column; align-items: flex-start; }
+      footer.lux-foot { flex-direction: column; }
+      .bot-viewport img { height: 220px; }
+      .arch-light-band { margin: 28px -20px; padding: 32px 20px; }
+      .crumb-note { margin-left: 0; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px 40px; }
+      .telemetry-ribbon { padding: 8px 16px; font-size: 10.5px; letter-spacing: 0.05em; }
+      .hero-grid, .grid-3, .grid-2, .grid-4, .kpi-strip, .dual-bot-stage { grid-template-columns: 1fr; }
+      h1.display-hero { font-size: 30px; }
+      .lede { font-size: 16px; }
+      .nav-links { gap: 8px; }
+      .nav-links a { padding: 8px 10px; }
+      .brand-lockup { max-width: 100%; }
+      .brand-title { font-size: 18px; }
+      .brand-sub { font-size: 10px; letter-spacing: 0.04em; white-space: normal; }
+      .arch-light-band { margin: 24px -16px; padding: 28px 16px; }
+    }
     </style>
 </head>
 <body>

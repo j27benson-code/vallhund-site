@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vallhund Cybernetics — Embodied Machine AI, Dexterous Manipulation &amp; Robotics Lab</title>
 <meta name="description" content="Vallhund Cybernetics is a commercial robotics lab in Fayetteville, NC (a trade name of KEMET Holdings LLC). Embodied machine AI, VH-MICRO-HAND-3F dexterous hands, and VH-PWR-2.0 power systems. Home of Vallhund Microbots™.">
 <link rel="canonical" href="https://vallhundcybernetics.com/">
@@ -457,14 +457,131 @@
     .sphere-hint {
       position: absolute;
       left: 12px;
+      right: 12px;
       bottom: 10px;
       margin: 0;
       font-family: var(--font-mono);
       font-size: 10.5px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: rgba(156, 214, 232, 0.78);
       pointer-events: none;
+    }
+    .spec-row {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line-soft);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      font-size: 12px;
+    }
+    .undock-pill, .dock-pill {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d8fbff;
+      background: rgba(0, 229, 255, 0.16);
+      border: 1px solid rgba(0, 229, 255, 0.55);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .undock-pill { margin: 10px 0 4px; }
+    .ai-sphere.is-roaming { min-height: 220px; }
+    .ai-sphere.is-roaming .undock-pill { display: none; }
+    #sphere-orb {
+      position: fixed;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      z-index: 9999;
+      touch-action: none;
+      overflow: hidden;
+      cursor: grab;
+      background: transparent;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 229, 255, 0.4);
+    }
+    #sphere-orb:active { cursor: grabbing; }
+    #sphere-orb[hidden] { display: none !important; }
+    #sphere-orb .lens-clip {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+      background: #06080b;
+    }
+    #sphere-orb .lens-mirror {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      pointer-events: none;
+      will-change: transform;
+    }
+    #sphere-orb canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      background: transparent;
+    }
+    #sphere-orb .glass-shine {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        radial-gradient(90% 70% at 30% 24%, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 38%),
+        radial-gradient(70% 50% at 72% 78%, rgba(0, 229, 255, 0.16), transparent 55%);
+      box-shadow: inset 0 0 0 2px rgba(190, 246, 255, 0.38), inset 0 -16px 28px rgba(0, 30, 48, 0.28);
+    }
+    #sphere-orb .dock-pill {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 5px 9px;
+      white-space: nowrap;
+    }
+    html, body { overflow-x: hidden; }
+    img, video, svg { max-width: 100%; height: auto; }
+    .nav-links { flex-wrap: wrap; }
+    .top-deck { flex-wrap: wrap; }
+    @media (max-width: 960px) {
+      .wrap { padding: 0 20px 48px; }
+      .telemetry-ribbon { flex-wrap: wrap; gap: 6px; padding: 8px 20px; }
+      .telemetry-ribbon > div { flex: 1 1 100%; }
+      .hero-grid, .grid-3, .grid-2, .dual-bot-stage { grid-template-columns: 1fr; }
+      .kpi-strip, .grid-4, .spec-row { grid-template-columns: 1fr 1fr; }
+      nav.top-deck { align-items: flex-start; }
+      h1.display-hero { font-size: 34px; }
+      .sec-head { flex-direction: column; align-items: flex-start; }
+      footer.lux-foot { flex-direction: column; }
+      .bot-viewport img { height: 220px; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px 40px; }
+      .telemetry-ribbon { padding: 8px 16px; font-size: 10.5px; letter-spacing: 0.05em; }
+      .hero-grid, .grid-3, .grid-2, .grid-4, .kpi-strip, .dual-bot-stage, .spec-row { grid-template-columns: 1fr; }
+      h1.display-hero { font-size: 30px; }
+      .lede { font-size: 16px; }
+      .nav-links { gap: 8px; }
+      .nav-links a { padding: 8px 10px; }
+      .brand-lockup { max-width: 100%; }
+      .brand-title { font-size: 18px; }
+      .brand-sub { font-size: 10px; letter-spacing: 0.04em; white-space: normal; }
+      .ai-sphere, .ai-sphere canvas { height: 240px; min-height: 240px; }
+      #sphere-orb { width: 176px; height: 176px; }
     }
     
     </style>
@@ -522,12 +639,13 @@
           <span class="mono-tag gold">EMBODIED AI FIELD</span>
           <span class="mono-tag">60 FPS · ON THIS PAGE</span>
         </div>
-        <div class="ai-sphere">
-          <canvas id="ai-sphere" role="img" aria-label="A sphere of glowing cyan, ice-blue, and white particles. Drag to rotate. Hover or tap to send a ripple across the surface."></canvas>
-          <p class="sphere-hint">Drag to rotate · hover or tap to ripple</p>
+        <div class="ai-sphere" id="sphere-stage">
+          <canvas id="ai-sphere" role="img" aria-label="A sphere of glowing cyan, ice-blue, and white particles. Drag it out of the hero to use it as a magnifying glass."></canvas>
+          <button type="button" class="undock-pill" id="undock-sphere">Undock Magnifier</button>
+          <p class="sphere-hint">Drag sphere around the page as a 2× magnifying glass · flick to bounce · double-tap to dock</p>
         </div>
       </div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font-size:12px">
+      <div class="spec-row">
         <div><b style="color:var(--accent);font-family:var(--font-mono);display:block">VH-MICRO-HAND-3F</b>Proprietary 3-Finger Rigid 4-Bar Dexterous Hand</div>
         <div><b style="color:var(--secondary);font-family:var(--font-mono);display:block">VH-PWR-2.0 MODULE</b>30A 3-Rail Isolated Hot-Swap Power Architecture</div>
         <div><b style="color:var(--ink);font-family:var(--font-mono);display:block">MICROBOTS™</b>Boozy™ &amp; Marshmallow™ Desk Line</div>
@@ -654,11 +772,17 @@
   </footer>
 </div>
 
+<div id="sphere-orb" hidden>
+  <div class="lens-clip"><div class="lens-mirror" id="lens-mirror"></div></div>
+  <div class="glass-shine" aria-hidden="true"></div>
+  <button type="button" class="dock-pill" id="dock-sphere">Dock ×</button>
+</div>
+
 <script>
 (function () {
   var canvas = document.getElementById('ai-sphere');
   if (!canvas || !canvas.getContext) return;
-  var ctx = canvas.getContext('2d', { alpha: false });
+  var ctx = canvas.getContext('2d', { alpha: true });
   var N = 6400;
   var bx = new Float32Array(N);
   var by = new Float32Array(N);
@@ -681,9 +805,18 @@
   var velYaw = 0;
   var velPitch = 0;
   var dragging = false;
+  var orbDrag = false;
+  var floating = false;
+  var orbX = 24;
+  var orbY = 24;
+  var vx = 0;
+  var vy = 0;
   var lastX = 0;
   var lastY = 0;
+  var lastT = 0;
   var moved = 0;
+  var lastTap = 0;
+  var primed = false;
   var ripples = [];
   var running = false;
   var raf = 0;
@@ -699,6 +832,94 @@
     dpr = Math.min(window.devicePixelRatio || 1, 1.75);
     canvas.width = Math.round(cssW * dpr);
     canvas.height = Math.round(cssH * dpr);
+    primed = false;
+  }
+
+  function orbSize() {
+    return window.innerWidth <= 640 ? 176 : 220;
+  }
+
+  function placeOrb() {
+    var orb = document.getElementById('sphere-orb');
+    orb.style.left = orbX + 'px';
+    orb.style.top = orbY + 'px';
+  }
+
+  function clampOrb() {
+    var size = orbSize();
+    var maxX = Math.max(0, window.innerWidth - size);
+    var maxY = Math.max(0, window.innerHeight - size);
+    if (orbX < 0) orbX = 0;
+    if (orbY < 0) orbY = 0;
+    if (orbX > maxX) orbX = maxX;
+    if (orbY > maxY) orbY = maxY;
+  }
+
+  function buildMirror() {
+    var mirror = document.getElementById('lens-mirror');
+    var shell = document.createElement('div');
+    var ribbon = document.querySelector('.telemetry-ribbon');
+    if (ribbon) shell.appendChild(ribbon.cloneNode(true));
+    var wrap = document.querySelector('.wrap');
+    if (wrap) {
+      var copy = wrap.cloneNode(true);
+      var nodes = copy.querySelectorAll('[id]');
+      var n;
+      for (n = 0; n < nodes.length; n++) nodes[n].removeAttribute('id');
+      var blank = copy.querySelector('canvas');
+      if (blank && blank.parentNode) blank.parentNode.removeChild(blank);
+      shell.appendChild(copy);
+    }
+    mirror.replaceChildren(shell);
+    mirror.style.width = document.documentElement.clientWidth + 'px';
+  }
+
+  function updateLens() {
+    if (!floating) return;
+    var mirror = document.getElementById('lens-mirror');
+    var size = orbSize();
+    var radius = size / 2;
+    var docX = orbX + radius + window.scrollX;
+    var docY = orbY + radius + window.scrollY;
+    mirror.style.width = document.documentElement.clientWidth + 'px';
+    mirror.style.transform = 'translate(' + (radius - docX * 2) + 'px,' + (radius - docY * 2) + 'px) scale(2)';
+  }
+
+  function undockAt(clientX, clientY) {
+    if (floating) return;
+    var orb = document.getElementById('sphere-orb');
+    var stage = document.getElementById('sphere-stage');
+    var size = orbSize();
+    floating = true;
+    dragging = false;
+    orbDrag = true;
+    vx = 0;
+    vy = 0;
+    orbX = clientX - size / 2;
+    orbY = clientY - size / 2;
+    clampOrb();
+    orb.hidden = false;
+    var shine = orb.querySelector('.glass-shine');
+    orb.insertBefore(canvas, shine);
+    stage.classList.add('is-roaming');
+    placeOrb();
+    buildMirror();
+    resize();
+    updateLens();
+  }
+
+  function dock() {
+    if (!floating) return;
+    var orb = document.getElementById('sphere-orb');
+    var stage = document.getElementById('sphere-stage');
+    floating = false;
+    orbDrag = false;
+    vx = 0;
+    vy = 0;
+    stage.insertBefore(canvas, stage.querySelector('.undock-pill'));
+    stage.classList.remove('is-roaming');
+    orb.hidden = true;
+    resize();
   }
 
   function addRipple(vx, vy, vz, amp) {
@@ -764,11 +985,33 @@
     }
     ripples = alive;
 
+    if (floating && !orbDrag && !reduce) {
+      var size = orbSize();
+      var maxX = Math.max(0, window.innerWidth - size);
+      var maxY = Math.max(0, window.innerHeight - size);
+      orbX += vx;
+      orbY += vy;
+      var bounce = 0.82;
+      if (orbX <= 0) { orbX = 0; vx = Math.abs(vx) * bounce; }
+      if (orbY <= 0) { orbY = 0; vy = Math.abs(vy) * bounce; }
+      if (orbX >= maxX) { orbX = maxX; vx = -Math.abs(vx) * bounce; }
+      if (orbY >= maxY) { orbY = maxY; vy = -Math.abs(vy) * bounce; }
+      vx *= 0.992;
+      vy *= 0.992;
+      if (Math.abs(vx) < 0.06) vx = 0;
+      if (Math.abs(vy) < 0.06) vy = 0;
+      placeOrb();
+    }
+    if (floating) updateLens();
+
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.globalCompositeOperation = 'source-over';
-    if (reduce) {
+    if (floating) {
+      ctx.clearRect(0, 0, cssW, cssH);
+    } else if (!primed || reduce) {
       ctx.fillStyle = '#07090d';
       ctx.fillRect(0, 0, cssW, cssH);
+      primed = true;
     } else {
       ctx.fillStyle = 'rgba(7,9,13,0.38)';
       ctx.fillRect(0, 0, cssW, cssH);
@@ -780,10 +1023,12 @@
     var glow = ctx.createRadialGradient(cx, cy, 10, cx, cy, Math.min(cssW, cssH) * 0.42);
     glow.addColorStop(0, 'rgba(0,229,255,0.07)');
     glow.addColorStop(1, 'rgba(0,229,255,0)');
-    ctx.fillStyle = glow;
-    ctx.beginPath();
-    ctx.arc(cx, cy, Math.min(cssW, cssH) * 0.46, 0, Math.PI * 2);
-    ctx.fill();
+    if (!floating) {
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(cx, cy, Math.min(cssW, cssH) * 0.46, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     ctx.globalCompositeOperation = 'lighter';
     for (i = 0; i < N; i++) {
@@ -825,9 +1070,18 @@
       var sy = cy + y2 * scale;
       var depth = (z2 + 1) * 0.5;
       var alpha = 0.12 + depth * 0.88;
-      var size = 0.8 + depth * 1.7;
+      var sizePx = 0.8 + depth * 1.7;
+      if (floating) {
+        var pr = Math.hypot(sx - cx, sy - cy);
+        var edge = Math.min(cssW, cssH) * 0.5;
+        var rim = (pr / edge - 0.52) / 0.48;
+        if (rim <= 0) continue;
+        if (rim > 1) rim = 1;
+        alpha *= rim;
+        sizePx *= 0.8 + rim * 0.45;
+      }
       ctx.fillStyle = 'rgba(' + colors[tone[i]] + ',' + alpha.toFixed(3) + ')';
-      ctx.fillRect(sx, sy, size, size);
+      ctx.fillRect(sx, sy, sizePx, sizePx);
     }
     ctx.globalCompositeOperation = 'source-over';
     if (running) raf = requestAnimationFrame(frame);
@@ -839,47 +1093,145 @@
     if (reduce) frame(performance.now());
   }
 
+  function outsideStage(clientX, clientY) {
+    var stage = document.getElementById('sphere-stage');
+    var rect = stage.getBoundingClientRect();
+    return clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom;
+  }
+
+  function trackVelocity(clientX, clientY, now) {
+    var dt = Math.max(8, now - lastT);
+    var instX = (clientX - lastX) / dt * 16.7;
+    var instY = (clientY - lastY) / dt * 16.7;
+    vx = vx * 0.45 + instX * 0.55;
+    vy = vy * 0.45 + instY * 0.55;
+    lastX = clientX;
+    lastY = clientY;
+    lastT = now;
+  }
+
   canvas.addEventListener('pointerdown', function (ev) {
+    if (floating) return;
     dragging = true;
+    orbDrag = false;
     moved = 0;
     lastX = ev.clientX;
     lastY = ev.clientY;
+    lastT = performance.now();
     velYaw = 0;
     velPitch = 0;
+    vx = 0;
+    vy = 0;
     canvas.setPointerCapture(ev.pointerId);
     poke(ev.clientX, ev.clientY, 1);
   });
   canvas.addEventListener('pointermove', function (ev) {
-    if (dragging) {
-      var dx = ev.clientX - lastX;
-      var dy = ev.clientY - lastY;
-      moved += Math.abs(dx) + Math.abs(dy);
-      yaw += dx * 0.008;
-      pitch += dy * 0.008;
-      if (pitch > 1.05) pitch = 1.05;
-      if (pitch < -1.05) pitch = -1.05;
-      velYaw = dx * 0.008;
-      velPitch = dy * 0.008;
-      lastX = ev.clientX;
-      lastY = ev.clientY;
-      if (reduce) frame(performance.now());
+    if (floating || orbDrag) return;
+    if (!dragging) {
+      if (ev.pointerType === 'mouse' && nowHover()) poke(ev.clientX, ev.clientY, 0.55);
       return;
     }
-    if (ev.pointerType === 'mouse' && nowHover(ev)) poke(ev.clientX, ev.clientY, 0.55);
+    var dx = ev.clientX - lastX;
+    var dy = ev.clientY - lastY;
+    moved += Math.abs(dx) + Math.abs(dy);
+    if (outsideStage(ev.clientX, ev.clientY)) {
+      var pid = ev.pointerId;
+      try { canvas.releasePointerCapture(pid); } catch (err) {}
+      undockAt(ev.clientX, ev.clientY);
+      try { document.getElementById('sphere-orb').setPointerCapture(pid); } catch (err2) {}
+      trackVelocity(ev.clientX, ev.clientY, performance.now());
+      return;
+    }
+    yaw += dx * 0.008;
+    pitch += dy * 0.008;
+    if (pitch > 1.05) pitch = 1.05;
+    if (pitch < -1.05) pitch = -1.05;
+    velYaw = dx * 0.008;
+    velPitch = dy * 0.008;
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+    if (reduce) frame(performance.now());
   });
   var lastHover = 0;
-  function nowHover(ev) {
+  function nowHover() {
     var n = performance.now();
     if (n - lastHover < 90) return false;
     lastHover = n;
     return true;
   }
   canvas.addEventListener('pointerup', function (ev) {
+    if (floating) return;
     dragging = false;
     if (moved < 8) poke(ev.clientX, ev.clientY, 1.15);
     try { canvas.releasePointerCapture(ev.pointerId); } catch (err) {}
   });
   canvas.addEventListener('pointercancel', function () { dragging = false; });
+
+  var orb = document.getElementById('sphere-orb');
+  orb.addEventListener('pointerdown', function (ev) {
+    if (ev.target.closest && ev.target.closest('.dock-pill')) {
+      ev.preventDefault();
+      dock();
+      return;
+    }
+    orbDrag = true;
+    dragging = false;
+    moved = 0;
+    lastX = ev.clientX;
+    lastY = ev.clientY;
+    lastT = performance.now();
+    vx = 0;
+    vy = 0;
+    orb.setPointerCapture(ev.pointerId);
+  });
+  orb.addEventListener('pointermove', function (ev) {
+    if (!orbDrag) return;
+    var now = performance.now();
+    moved += Math.abs(ev.clientX - lastX) + Math.abs(ev.clientY - lastY);
+    var size = orbSize();
+    orbX += ev.clientX - lastX;
+    orbY += ev.clientY - lastY;
+    clampOrb();
+    trackVelocity(ev.clientX, ev.clientY, now);
+    placeOrb();
+    updateLens();
+    if (reduce) frame(now);
+  });
+  orb.addEventListener('pointerup', function (ev) {
+    if (ev.target.closest && ev.target.closest('.dock-pill')) return;
+    var wasDrag = orbDrag;
+    orbDrag = false;
+    try { orb.releasePointerCapture(ev.pointerId); } catch (err) {}
+    if (!wasDrag || !floating) return;
+    if (moved < 12) {
+      var now = performance.now();
+      if (now - lastTap < 350) {
+        lastTap = 0;
+        dock();
+        return;
+      }
+      lastTap = now;
+      poke(ev.clientX, ev.clientY, 1);
+    }
+  });
+  orb.addEventListener('pointercancel', function () { orbDrag = false; });
+
+  document.getElementById('undock-sphere').addEventListener('click', function () {
+    var rect = document.getElementById('sphere-stage').getBoundingClientRect();
+    undockAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    orbDrag = false;
+    vx = 0;
+    vy = 0;
+  });
+  document.getElementById('dock-sphere').addEventListener('click', function (ev) {
+    ev.preventDefault();
+    dock();
+  });
+  window.addEventListener('scroll', function () { if (floating) updateLens(); }, { passive: true });
+  window.addEventListener('pointerup', function () {
+    dragging = false;
+    if (orbDrag) orbDrag = false;
+  });
 
   function start() {
     if (running) return;
