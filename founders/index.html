@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=1440,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Founders &amp; Contact — Vallhund Cybernetics</title>
 <meta name="description" content="Founders and contact for Vallhund Cybernetics, a commercial robotics lab in Fayetteville, North Carolina.">
 <link rel="canonical" href="https://vallhundcybernetics.com/founders/">
@@ -106,6 +106,22 @@
     address a { color: var(--accent); }
     footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line-soft); color: var(--muted); font-size: 13px; }
     footer a { color: var(--accent); }
+    html, body { overflow-x: hidden; }
+    @media (max-width: 960px) {
+      .wrap { padding: 0 20px 48px; }
+      .ribbon { padding: 8px 20px; }
+      nav { flex-wrap: wrap; align-items: flex-start; }
+      h1 { font-size: 34px; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px 40px; }
+      .ribbon { padding: 8px 16px; letter-spacing: 0.06em; }
+      .card { grid-template-columns: 1fr; justify-items: start; }
+      .portrait { width: 120px; height: 148px; }
+      h1 { font-size: 30px; }
+      .nav-links a { padding: 8px 10px; }
+    }
 </style>
 </head>
 <body>
